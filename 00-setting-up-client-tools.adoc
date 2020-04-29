@@ -1,10 +1,9 @@
 [[setting-up-client-tools]]
-Setting up client tools
-~~~~~~~~~~~~~~~~~~~~~~~
+== Setting up client tools
 
 In this Lab we will look at how to install the OpenShift CLI tools.
 
-*Installing the Command-line Tools*
+=== Installing the Command-line Tools 
 
 After completing this section, you should be able to:
 
@@ -13,7 +12,7 @@ interface (OC CLI)
 * Install the OpenShift CLI tools.
 * CLI basic configuration
 
-*Locating the binaries*
+=== Locating the binaries
 
 The OSE CLI exposes commands for managing applications, as well as
 lower-level tools to interact with each component of a system. The
@@ -22,40 +21,39 @@ Red Hat Customer Portal via the following link:
 
 {{REDHAT_DOWNLOAD_OC_PORTAL_URL}}
 
-*Installing the OpenShift CLI tools*
+=== Installing the OpenShift CLI tools
 
 The CLI is provided as compressed files that can be decompressed to any
 directory. In order to make it simple for any user to access the OSE
 CLI, it is recommended that it is made available in a directory mapped
 to the environment variable called `PATH` from the OS.
 
-*1. OSX and Linux:*
+OSX and Linux:
 
-** OSX
+* OSX
 https://mirror.openshift.com/pub/openshift-v4/clients/ocp/{{VERSION}}/openshift-client-mac-{{VERSION}}.tar.gz
 
-** Linux
+* Linux
 https://mirror.openshift.com/pub/openshift-v4/clients/ocp/{{VERSION}}/openshift-client-linux-{{VERSION}}.tar.gz
 
-Copy the binary to the `/usr/local/bin` directory, or one of the
+* Copy the binary to the `/usr/local/bin` directory, or one of the
 paths listed in the `PATH` environment variable.
 
-*2. Windows:*
+Windows:
 
-** https://mirror.openshift.com/pub/openshift-v4/clients/ocp/{{VERSION}}/openshift-client-windows-{{VERSION}}.zip
+* https://mirror.openshift.com/pub/openshift-v4/clients/ocp/{{VERSION}}/openshift-client-windows-{{VERSION}}.zip
 
-** Use `oc.exe` to open an OpenShift shell. If you getting error from
+* Use `oc.exe` to open an OpenShift shell. If you getting error from
 running oc, go to http://git-scm.com to download git bash for Windows (during
 installation you need to specify in the selection to integrate with the
 command prompt)
 
-**Important notes**
-Download and install Notepad++ and install the JSON plugin or use
+NOTE: Download and install Notepad++ and install the JSON plugin or use
 http://jsonlint.com/ to edit and validate JSON.
 http://ammonsonline.com/formatted-json-in-notepad/
 Configure your default editor to be Notepad++*
 
-*3. CLI basic configuration*
+=== CLI basic configuration
 
 The easiest way to initially setup the OpenShift CLI is to use the
 `oc login` command. It'll interactively ask you a server URL, username

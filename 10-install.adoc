@@ -1,6 +1,8 @@
 [[install]]
-= Installing CodeReady Workspaces
+Installing CodeReady Workspaces
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 In this Lab we install CodeReady Workspaces(CRW) on OpenShift using an Operator.
 
-== Create a project
+== Create a project in in OpenShift
 First we will need to create a project for CRW to execute in

@@ -1,0 +1,12 @@
+= CodeReady Workspaces Workshop
+This repository contains a guide for the CodeReady Workspaces workshop and other related resources.
+
+=== Installing on OpenShift
+Connect to openshift using the command line tools and then run the `update` script
+[source,shell]
+----
+./update.sh
+----
+
+=== Reference
+This workshop is based on https://github.com/openshift-evangelists/workshopper[workshopper].  If you wish to create your own workshop start with the https://github.com/siamaksade/workshopper-template[template].

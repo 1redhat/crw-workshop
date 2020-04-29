@@ -2,7 +2,7 @@ config:
   renderer: asciidoc
 
 modules:
-  0-setting-up-client-tools:
+  00-setting-up-client-tools:
     name: Client Tools
   01-verify-connectivity:
     name: Verify Connectivity

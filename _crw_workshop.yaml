@@ -1,0 +1,17 @@
+id: "crwworkshop"
+name: "CodeReady Workspaces Workshop"
+
+content:
+  url: https://raw.githubusercontent.com/1redhat/crw-workshop/master
+
+vars:
+  JAVA_APP: false
+  VERSION: "4.3.17"
+  REDHAT_DOWNLOAD_OC_PORTAL_URL: "https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/"
+  API_URL: "https://api.cluster-8f8a.sandbox1118.opentlc.com:6443"
+  CONSOLE_ADDRESS: "https://console-openshift-console.apps.cluster-8f8a.sandbox1118.opentlc.com"
+  
+modules:
+  activate:
+  - 0-setting-up-client-tools
+  - 01-verify-connectivity

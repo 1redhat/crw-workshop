@@ -35,3 +35,18 @@ NOTE: This step requires an administrator account on a running instance of OpenS
 . Navigate to the *Events* tab.
 . Wait for this message: `install strategy completed with no errors`.
 
+=== Installing CodeReady Workspaces using the CodeReady Workspaces Operator in OpenShift 4 web console
+
+NOTE: This step requires an administrator account on a running instance of OpenShift 4
+
+. Open the OpenShift web console.
+. Navigate to the *Operators → Installed Operators* section.
+. Click *Red Hat CodeReady Workspaces* in the list of installed operators.
+. Click the *Create Instance* link in *Provided APIs* section.
+. The *Create CodeReady Workspaces Cluster* page is displayed.
+. Leave the default values as they are.
+. Click the `Create` button in the bottom-left corner of the window.
+. The codeready cluster is created.
+
+image::resources-tab.png[image]
+

@@ -1,0 +1,32 @@
+config:
+    vars:
+      - name: DEFAULT_PASSWORD
+        desc: Default password for users in the environment
+        value: openshift4
+      - name: VERSION
+        desc: Version is used
+        value: 4.2.13
+      - name: CONSOLE_ADDRESS
+        desc: HTTP address of the OpenShift console
+        value: https://https://console-openshift-console.apps.ocp4demo.sc.osecloud.com/
+      - name: APPS_ADDRESS
+        desc: HTTP address suffix of apps deployed on OpenShift
+        value: apps.ocp4demo.sc.osecloud.com/
+      - name: GET_STARTED_CLI_URL
+        desc: URL to documentation to configure CLI
+        value: https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/
+      - name: API_URL
+        desc: URL to API server
+        value: https://api.ocp4demo.sc.osecloud.com:6443
+      - name: LOGGING_URL
+        desc: Logging URL
+        value: https://kibana-openshift-logging.apps.ocp4demo.sc.osecloud.com
+      - name: CRW_URL
+        desc: CodeReady Workspace URL
+        value: http://codeready-codereadyworkspace.apps.ocp4demo.sc.osecloud.com
+  
+  modules:
+    0-setting-up-client-tools:
+      name: Setting up OpenShift client tools
+    01-verify-connectivity:
+      name: Verify connectivity

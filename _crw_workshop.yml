@@ -15,3 +15,4 @@ modules:
   activate:
   - 00-setting-up-client-tools
   - 01-verify-connectivity
+  - 10-install

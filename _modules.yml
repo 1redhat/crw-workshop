@@ -6,5 +6,3 @@ modules:
     name: Client Tools
   01-verify-connectivity:
     name: Verify Connectivity
-  10-install:
-    name: Installing Workspaces

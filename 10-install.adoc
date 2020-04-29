@@ -6,6 +6,8 @@ In this Lab we install CodeReady Workspaces(CRW) on OpenShift using an Operator.
 === Create a project in OpenShift
 First we will need to create a project in OpenShift for CRW to execute in.
 
+NOTE: This step requires an administrator account on a running instance of OpenShift 4
+
 . Open the OpenShift web console.
 . In the left panel, navigate to `Projects`.
 . Click the `Create Project` button.
@@ -14,4 +16,22 @@ First we will need to create a project in OpenShift for CRW to execute in.
 .. In the *Display Name* field, type `Red Hat CodeReady Workspaces`.
 . Click the `Create` button.
 
+=== Installing the CodeReady Workspaces Operator in OpenShift 4 web console
+
 NOTE: This step requires an administrator account on a running instance of OpenShift 4
+
+. Open the OpenShift web console.
+. In the left panel, navigate to the *Operators → OperatorHub section*.
+. In the *Search by keyword* field, type `Red Hat CodeReady Workspaces`.
+. Click on the *Red Hat CodeReady Workspaces* tile.
+. Click the `Install` button in the *Red Hat CodeReady Workspaces* pop-up window.
+. In the *A specific namespace on the cluster field*, in the cluster drop-down .list, select the namespace into which the previous version of the CodeReady Workspaces Operator was installed.
+. Click the `Subscribe` button.
+. In the left panel, navigate to the *Operators → Installed Operators* section.
+. Red Hat CodeReady Workspaces is displayed as an installed Operator having the *InstallSucceeded* status.
+. Click on the *Red Hat CodeReady Workspaces* name in the list of installed operators.
+. Navigate to the *Overview* tab.
+. In the *Conditions* sections at the bottom of the page, wait for this message: `install strategy completed with no errors`.
+. Navigate to the *Events* tab.
+. Wait for this message: `install strategy completed with no errors`.
+

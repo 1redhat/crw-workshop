@@ -1,30 +1,27 @@
 config:
-    vars:
-      - name: DEFAULT_PASSWORD
-        desc: Default password for users in the environment
-        value: openshift4
-      - name: VERSION
-        desc: Version is used
-        value: 4.2.13
-      - name: CONSOLE_ADDRESS
-        desc: HTTP address of the OpenShift console
-        value: https://https://console-openshift-console.apps.ocp4demo.sc.osecloud.com/
-      - name: APPS_ADDRESS
-        desc: HTTP address suffix of apps deployed on OpenShift
-        value: apps.ocp4demo.sc.osecloud.com/
-      - name: GET_STARTED_CLI_URL
-        desc: URL to documentation to configure CLI
-        value: https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/
-      - name: API_URL
-        desc: URL to API server
-        value: https://api.ocp4demo.sc.osecloud.com:6443
-      - name: LOGGING_URL
-        desc: Logging URL
-        value: https://kibana-openshift-logging.apps.ocp4demo.sc.osecloud.com
-      - name: CRW_URL
-        desc: CodeReady Workspace URL
-        value: http://codeready-codereadyworkspace.apps.ocp4demo.sc.osecloud.com
-  
+  vars:
+    - name: DEFAULT_PASSWORD
+      desc: Default password for users in the environment
+      value: openshift
+    - name: CONSOLE_ADDRESS
+      desc: HTTP address of the OpenShift console
+      value: https://console-openshift-console.apps.cluster-4c7b.sandbox575.opentlc.com
+    - name: APPS_ADDRESS
+      desc: HTTP address suffix of apps deployed on OpenShift
+      value: apps.cluster-4c7b.sandbox575.opentlc.com/
+    - name: GET_STARTED_CLI_URL
+      desc: URL to documentation to configure CLI
+      value: https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/
+    - name: API_URL
+      desc: URL to API server
+      value: https://api.cluster-4c7b.sandbox575.opentlc.com:6443
+    - name: NEXUS_URL
+      desc: URL to Nexus repository
+      value: http://nexus-workshop.apps.experian-fbef.openshiftworkshop.com/repository/maven-public/
+    - name: REDHAT_DOWNLOAD_OC_PORTAL_URL
+      desc: URL for Red Hat portal oc binary download
+      value: https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/
+        
   modules:
     0-setting-up-client-tools:
       name: Setting up OpenShift client tools

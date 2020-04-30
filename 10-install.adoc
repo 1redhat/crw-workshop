@@ -3,10 +3,10 @@
 
 In this Lab we install CodeReady Workspaces(CRW) on OpenShift using an Operator.
 
-=== Create a project in OpenShift
-First we will need to create a project in OpenShift for CRW to execute in.
+NOTE: These steps require an administrator account on a running instance of OpenShift 4
 
-NOTE: This step requires an administrator account on a running instance of OpenShift 4
+=== Create a project in OpenShift
+This section describes how to create the CodeReady Workspaces project in OpenShift web console.
 
 . Open the OpenShift web console.
 . In the left panel, navigate to `Projects`.
@@ -17,8 +17,7 @@ NOTE: This step requires an administrator account on a running instance of OpenS
 . Click the `Create` button.
 
 === Installing the CodeReady Workspaces Operator in OpenShift 4 web console
-
-NOTE: This step requires an administrator account on a running instance of OpenShift 4
+This section describes how to install the CodeReady Workspaces Operator in OpenShift 4 web console.
 
 . Open the OpenShift web console.
 . In the left panel, navigate to the *Operators → OperatorHub section*.
@@ -36,8 +35,7 @@ NOTE: This step requires an administrator account on a running instance of OpenS
 . Wait for this message: `install strategy completed with no errors`.
 
 === Installing CodeReady Workspaces using the CodeReady Workspaces Operator in OpenShift 4 web console
-
-NOTE: This step requires an administrator account on a running instance of OpenShift 4
+This section describes how to install CodeReady Workspaces using the CodeReady Workspaces Operator in OpenShift 4 web console.
 
 . Open the OpenShift web console.
 . Navigate to the *Operators → Installed Operators* section.
@@ -48,5 +46,33 @@ NOTE: This step requires an administrator account on a running instance of OpenS
 . Click the `Create` button in the bottom-left corner of the window.
 . The codeready cluster is created.
 
+image::instance-created.png[image]
+
+=== Viewing the state of the CodeReady Workspaces instance deployment in OpenShift web console
+
+This section describes how to view the state of the CodeReady Workspaces instance deployment in OpenShift web console.
+
+. Open the OpenShift web console.
+. Navigate to the *Operators → Installed Operators* section.
+Click *Red Hat CodeReady Workspaces* in the list of installed operators.
+. Navigate to the *CodeReady Workspaces Cluster*  tab.
+. Click *codeready-workspaces* CheCluster in the table.
+. The *Overview* tab is displayed.
+. Watch the content of the *Message* field. The field contain error messages, if any. The expected content is `None`.
+. Navigate to the *Resources* tab.
+. The screen displays the state of the resources assigned to the CodeReady Workspaces deployment.
+
 image::resources-tab.png[image]
+
+=== Finding CodeReady Workspaces instance URL in OpenShift web console
+
+This section descibes how to find the CodeReady Workspaces instance URL in OpenShift web console.
+
+. Open the OpenShift web console.
+. In the left panel, navigate to the *Operators → Installed Operators* section.
+. Click the *Red Hat CodeReady Workspaces* Operator tile.
+. Click the *CodeReady Workspaces Cluster* tab.
+. Click *codeready-workspaces* CheCluster in the table.
+. The *Overview* tab is displayed.
+. Read the value of the *CodeReady Workspaces URL* field.
 

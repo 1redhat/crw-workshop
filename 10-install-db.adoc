@@ -1,0 +1,23 @@
+[[install-db]]
+== Installing Database Operator
+
+NOTE: These steps require an administrator account on a running instance of OpenShift 4
+
+=== Installing the CockroachDB Operator in OpenShift 4 web console
+This section describes how to install the CockroachDB Operator in OpenShift 4 web console.
+
+. Open the OpenShift web console.
+. In the left panel, navigate to the *Operators → OperatorHub section*.
+. Click `Database` under *All Items*.
+. Click on the *CockroachDB (Community)* tile.
+. Click `Continue` from the `Show Community Operator` window.
+. Click the `Install` button in the *CockroachDB* pop-up window.
+. Select the radio button next to *All namespaces on the cluster (default)*
+. Click the `Subscribe` button.
+. Go to `openshift-operators` project from the top project dropdown list.
+. In the left panel, navigate to the *Operators → Installed Operators* section.
+. CockroachDB displayed as an installed Operator having the *Succeeded* status.
+. In the left panel, navigate to the *Workloads → Pods* section.
+. You should see the CockroachDB operator is running as a pod.
+
+Now you are ready for developers to create databases.

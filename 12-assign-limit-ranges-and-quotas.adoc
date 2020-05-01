@@ -1,0 +1,22 @@
+[[assign-limit-ranges-and-quotas]]
+== Assigning Limit Ranges and Quotas
+
+In this lab you will learn how to set up limit ranges and quotas. You will also learn how to assign these to project namespaces.
+
+=== Limit Ranges
+
+Limit Ranges establish the number of compute resource constraints in a given project. These constraints affect the pod, container, image, image stream, and persistent volume claims. It specifies the amount of resources that these can consume.
+
+It also sets the minimum, maximum, and default resources that something can/will take.
+
+==== Step 1
+Limit Ranges can be set on an existing project or a brand new projects. Depending what you do, there might be a caveat.
+
+ - Brand New Projects - The Limit Range will be applied immedietly.
+ - Existing Projects - The Limit Range will be applied immedietly, and will take affect to newly created resources. Current pods will not be affected until restart.
+
+For this exercise we will be going the "brand new project" route. Create this project called limits-quotas
+
+```
+$ oc new-project limits-quotas
+```

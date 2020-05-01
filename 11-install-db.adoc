@@ -1,6 +1,8 @@
 [[install-db]]
 == Installing Database Operator
 
+In this Lab we install a database operator on OpenShift.
+
 NOTE: These steps require an administrator account on a running instance of OpenShift 4
 
 === Installing the CockroachDB Operator in OpenShift 4 web console

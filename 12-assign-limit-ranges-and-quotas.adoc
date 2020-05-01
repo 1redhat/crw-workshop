@@ -9,14 +9,119 @@ Limit Ranges establish the number of compute resource constraints in a given pro
 
 It also sets the minimum, maximum, and default resources that something can/will take.
 
-==== Step 1
 Limit Ranges can be set on an existing project or a brand new projects. Depending what you do, there might be a caveat.
 
  - Brand New Projects - The Limit Range will be applied immedietly.
  - Existing Projects - The Limit Range will be applied immedietly, and will take affect to newly created resources. Current pods will not be affected until restart.
 
-For this exercise we will be going the "brand new project" route. Create this project called limits-quotas
+==== Configure Limits Ranges and Quotas
 
-```
+1) For this exercise we will be going the "brand new project" route. Create this project called limits-quotas
+....
 $ oc new-project limits-quotas
-```
+....
+2) Assign to user1
+....
+$ oc policy add-role-to-user admin user1 -n limits-quotas
+....
+3) In the Web Console, login as user1. You should see limits-quotas listed; click on it to go to the overview page.
+
+4) In the left panel, navigate to the *Administration → Resource Quotas* section.
+
+5) In the left panel, navigate to the *Administration → Limit Ranges* section.
+
+6) It should show that there is no limits or quotas set. This means that any application created in this namespace can use as much resource that is available (default behavior). Now on the command-line (as system:admin) create a yaml file called limits.yaml.
+
+7) Login to the web console as admin1, in the left panel, navigate to the *Administration → Resource Quotas*
+
+8) click 'Create Resource Quota', use the default quota and click `Create`.
+
+9) In the left panel, navigate to the *Administration → Limit Ranges*
+
+10) click 'Create Limit Range', paste the following YAML to the text area.
+....
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: resource-limits
+  namespace: openshift-operators
+spec:
+  limits:
+    - type: "Pod"
+      max:
+        cpu: "2"
+        memory: "1Gi"
+      min:
+        cpu: "200m"
+        memory: "6Mi"
+    - type: "Container"
+      max:
+        cpu: "2"
+        memory: "1Gi"
+      min:
+        cpu: "100m"
+        memory: "4Mi"
+      default:
+        cpu: "300m"
+        memory: "200Mi"
+      defaultRequest:
+        cpu: "200m"
+        memory: "100Mi"
+      maxLimitRequestRatio:
+        cpu: "10"
+....
+
+11) Login back in as user1, click onto the limits-quota project.
+
+12) In the left panel, navigate to the *Administration → Resource Quotas* section.
+
+image::resource-quotas.png[image]
+
+==== Deploy an applicate to generate usage
+
+1) Login web console as user1
+
+2) Switch to Developer Console by havigating to *</> Developer* from the top of left menu
+
+3) In the left panel, navigate to the *Topology* section.
+
+4) Click `Container Image` tile
+
+5) Enter `redhatworkshops/welcome-php` as the image name
+
+6) Click the search icon
+
+7) Enter `welcome-limits` in the field for `Application Name` and `Name`
+
+8) Click `Resource Limits` under `Advance Option`
+
+9) Enter 10 for CPU request, 100 for CPU limit, 128 for memory request, and 256 for memory limit
+
+10) Click `Create`
+
+11) In the left panel, navigate to the *Advanced → Project Details* section.
+
+image::project-details.png[image]
+
+==== Testing the quota
+
+1) Continue to stay on the Developer Console
+
+2) In the left panel, navigate to the *Topology* section.
+
+3) Click in the middle of the circle and click onto deployment name `welcome-limits`
+
+4) Use the arrow up to increase pod number to 5
+
+5) you will notice the deployment only spin up 4 pods instead of 5
+
+image::deployment-quota.png[image]
+
+6) In the left panel, navigate to the *Advanced → Events* section.
+
+image::quotaexceed-event.png[image]
+
+==== Conclusion
+In this lab you learned how to assign limits and quotas. You also learned how to assign these to a specific project and saw how it affected the creation of applications.
+
+Setting up limits and quotas can be a complex subject. Please consult the official documents for further information about quota and limit range.

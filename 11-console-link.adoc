@@ -1,0 +1,35 @@
+[[install]]
+== Installing CodeReady Workspaces
+
+In this Lab we create a link in the developer console to CodeReady Workspaces for developers to use.
+
+NOTE: These steps require an administrator account on a running instance of OpenShift 
+
+=== Create a custom resource
+This section describes how to create the CodeReady Workspaces project in OpenShift web console.
+
+
+. Open the OpenShift web console.
+. In the left panel, navigate to *Administration → Custom Resource Definitions*. 
+. Filter by *consolelink*.
+. Click on the *ConsoleLink*.
+. Click on the *Instances* tab.
+. Click on the *Create Cosole Link* button.
+. Paste the custom resource below in the editor. Modify the *href* value to be the link to your CodeReady environment. Use the *CodeReady Workspaces URL* you noted from the install step.
++
+[source, yaml]
+----
+apiVersion: console.openshift.io/v1
+kind: ConsoleLink
+metadata:
+  name: CodeReadyLink
+spec:
+  location: ApplicationMenu
+  href: 'http://codeready-codeready.apps.clustere4f9.sandbox596.opentlc.com/'
+  text: CodeReady Workspaces
+----
+. Click the *Create* button.  
+. Switch from the Administrator view to the *Developer* perspective using the drop down in the upper left of the screen.
+. Notice the application menu contains a link to *CodeReady WorkSpaces*
+
+image::codeready-link.png[image]

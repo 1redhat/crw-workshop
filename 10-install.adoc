@@ -75,4 +75,5 @@ This section descibes how to find the CodeReady Workspaces instance URL in OpenS
 . Click *codeready-workspaces* CheCluster in the table.
 . The *Overview* tab is displayed.
 . Read the value of the *CodeReady Workspaces URL* field.
+. Note this URL for a later step
 

@@ -33,5 +33,8 @@ image::codeready-link.png[image]
 +
 . You will be required to log in again.
 . Authorize user access to the CodeReady by clicking `Allow select permissions`
++
 image::authorize-access.png[image]
-. Update your `Email`,`First name` and `Last name` on the Update Account information screen and click `Submit` 
++
+. Update your `Email`,`First name` and `Last name` on the Update Account information screen and click `Submit`
+. You should now see the CodeReady Workspaces dashboard

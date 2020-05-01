@@ -1,5 +1,5 @@
 [[install]]
-== Installing CodeReady Workspaces
+== Create a link to the CodeReady Workspaces URL
 
 In this Lab we create a link in the developer console to CodeReady Workspaces for developers to use.
 

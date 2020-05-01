@@ -17,3 +17,4 @@ modules:
   - 01-verify-connectivity 
   - 10-install
   - 11-console-link
+  - 50-dev-access

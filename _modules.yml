@@ -10,3 +10,5 @@ modules:
     name: Install CodeReady Workspaces
   11-console-link:
     name: Link to CodeReady Workspaces
+  50-dev-access:
+    name: Developer Access

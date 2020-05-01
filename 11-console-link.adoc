@@ -1,4 +1,4 @@
-[[install]]
+[[console-link]]
 == Create a link to the CodeReady Workspaces URL
 
 In this Lab we create a link in the developer console to CodeReady Workspaces for developers to use.
@@ -29,7 +29,6 @@ spec:
   text: CodeReady Workspaces
 ----
 . Click the *Create* button.  
-. Switch from the Administrator view to the *Developer* perspective using the drop down in the upper left of the screen.
 . Notice the application menu contains a link to *CodeReady WorkSpaces*
 
 image::codeready-link.png[image]

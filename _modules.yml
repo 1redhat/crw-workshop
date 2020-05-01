@@ -7,6 +7,6 @@ modules:
   01-verify-connectivity:
     name: Verify Connectivity
   10-install:
-    name: Install Workspaces
+    name: Install CodeReady Workspaces
   11-console-link:
-    name: Link to CodeReady
+    name: Link to CodeReady Workspaces

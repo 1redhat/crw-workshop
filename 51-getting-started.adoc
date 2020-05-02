@@ -1,0 +1,64 @@
+[[dev-access]]
+== Getting Started with CodeReady Workspaces
+
+In this lab we will walk through setting up or first workspace.
+
+
+=== Create a workspace
+
+We will be creating a Quarkus application.  If your experience with java this will all look familar.  If not don't worry the point of this excercise is to teach the value of CodeReady Workspaces and not a programming language.
+
+. If your not already on the `Getting Started` view.  Click it on the left
++
+image::get-started.png[image]
++
+. Within the page you will see a Quarkus tile, click it. Notice the tile in the image above.
+. Notice in the upper right the *CREATE AND OPEN* button is highlighted, click it.
+. This will start an ide and will take a few minutes. You will see updates as it progress and notice the workspace being created under the *RECENT WORKSPACES*.
+. Once completed the IDE will open.  If you have worked with Visual Studio the IDE should look familar.  Both products are based on an opensource upstream project.
+
+=== Introduction to the file exployer and terminal 
+
+. First lets take a look at the click on the files icon which is on the top left.
+. Expand the *quarkus-quickstarts* and *getting-started* folder notice the structure is similar to any other java maven project.
+. Next lets look at the file system in the terminal. 
+. Click *Terminal* in the menu bar.
+. Click *Open Terminal in specific container*
+. Click the first container in the list named *maven* notice its label the developer container.
+. in the terminal window
++
+[source,shell]
+----
+cd quarkus-quickstarts/getting-started/
+ls -la
+----
++
+. Notice the file exployer and terminal are showing 
+the same files.  This is the file system of you developemen environment.
+. Here is a screen shot of what your environment should look like
++
+image::terminal.png[image]
+
+
+=== Executing tasks
+
+. On the far right click on the *cube* icon
+. Expand *User Runtimes* and *maven*
+. Single Click *Package the application*
+. Notice a new terminal window opens and *mvn package* is executed against the project
++
+image::package.png[image]
++
+. Now lets start the appllication
+. In the same list single click the *Start Quarkus in devmode (hot deploy + debug)*
+. A model will open stating "A process is not listening...". Click *Open Link*
++
+image::process-listening.png[image]
++
+. In a new right pane a browser view will open.  It will be opened to the base url of the appliction 
++
+image::browser-view.png[image]
++
+. Go back to the cude icon on the right and click *hello-greeting-endpoint*
+. Change *che-user* at the end of the url to your first name. Notice how the page responds once you hit enter.
+

@@ -12,3 +12,5 @@ modules:
     name: Link to CodeReady Workspaces
   50-dev-access:
     name: Developer Access
+  51-getting-started:
+    name: Getting Started

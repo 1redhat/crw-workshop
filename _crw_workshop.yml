@@ -18,3 +18,4 @@ modules:
   - 10-install
   - 11-console-link
   - 50-dev-access
+  - 51-getting-started

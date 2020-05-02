@@ -1,0 +1,58 @@
+[[monitoring-usage]]
+== Monitoring
+
+OpenShift Container Platform comes with a pre-configured, pre-installed, and self-updating monitoring stack that is based on the Prometheus open source project.It provides monitoring of cluster components and includes a set of alerts to immediately notify the cluster administrator about any occurring problems and a set of Grafana dashboards.
+
+=== Cluster & Project Dashboards
+
+Before checking out the monitoring stack, let take a look at the Cluster and Project Dashboards. It is a convenience way to check out the cluster or project overall health.
+. Go to the Administrator console if you are not already there.
+. In the left panel, navigate to the *Home → Dashboards* section.
+. This is the Cluster Dashboard
+
+image::cluster-dashboard.png[image]
+
+. In the left panel, navigate to the *Home → Projects* section.
+. Click onto one of the projects in the list.
+. This will show you the Project Dashboard. It give a summary of the project details, inventory, activity, events and more.
+
+image::project-dashboard.png[image]
+
+
+=== Check out the Monitor from Administrator Console
+. In the left panel, navigate to the *Monitoring → Dashboards* section.
+. It will take you to a login, Click `Login with OpenShift`.
+. Select the proper provider, enter your admin credential.
+. You will now login to the Grafana Dashboard.
+. OpenShift Monitoring includes a set of Dashboards as part of the installation.
+. Click `Home`, under `General`, you can select any available OOTB dashboards and explore.
+
+=== How to get to the Cluster metrics
+. Go back to the web console and the Administrator console.
+. In the left panel, navigate to the *Monitoring → Metrics* section.
+. If you start typing `cpu usage` in the express field, a list of available metrics to pick from.
+. Pick any one from the list, for example enter `cluster:cpu_usage_cores:sum` and click `Run Queries`
+. The requested metrics will show in the graph.
+. If you scroll to the top and click onto `Prometheus UI`
+. It will prompt you to login to the Prometheus.
+. Click `Login with OpenShift`
+. Select the provider
+. Enter credential
+. If you see `Authoriz Access`, click `Allow selected permission`
+
+=== Alerts
+
+OpenShift Container Platform 4.2 provides a web interface to the Alertmanager, which enables you to manage alerts.
+
+. In the left panel, navigate to the *Monitoring → Alerting* section.
+. On the `Alerts` tab, click `Firing` to view all recent alerts that fired.
+. You can use filter to search for alerts.
+. Click onto any alert to more details.
+. Click on the `Silences` and create silence for any alert.
+. you can access the alert manager vi `Alertmanager UI` link on the top of the page.
+. It will prompt you to login to the `Alertmanager`.
+. Click `Login with OpenShift`
+. Select the provider
+. Enter credential
+. If you see `Authoriz Access`, click `Allow selected permission`
+. you can manage alerts from alert manager.

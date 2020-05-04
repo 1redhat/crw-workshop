@@ -81,7 +81,7 @@ image::breakpoint.png[image]
 . Refresh you browser showing the *hello-greeting-endpoint* or click it again in the task manager
 . Go back to the IDE and notice the break point has been hit.
 +
-image::breakpoint.png[image]
+image::debugging.png[image]
 +
 . Notice all the debuggging panes on the left side of workspace.
 . Clike the *blue play pause* button to continue executing the code.

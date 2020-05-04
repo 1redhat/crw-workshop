@@ -59,7 +59,7 @@ image::process-listening.png[image]
 +
 image::browser-view.png[image]
 +
-. Go back to the cude icon on the right and click *hello-greeting-endpoint*
+. Go back to the cube icon on the right and click *hello-greeting-endpoint*
 . Change *che-user* at the end of the url to your first name. Notice how the page responds once you hit enter.
 . Now lets change some code. 
 . Go to the GreetingService.java class shown below.
@@ -67,8 +67,8 @@ image::browser-view.png[image]
 image::hot-deploy.png[image]
 +
 . Change hello to *hola* and save the file
-. Refresh your your browser from the previous step and notice the change was introduced without a compile step.  If you closed your browser window click *hello-greeting-endpoint* again.
-. Close the cosole running quarkus?
+. Refresh your browser from the previous step and notice the change was introduced without a compile step.  If you closed your browser window click *hello-greeting-endpoint* again.
+. *Hot deploy* does not require you to recompile the code to execute code changes. Its one of many features in Quarkus.
 . Now lets turn our attention to debuging.
 . Notice in the menu bar a *Debug* item, click it.
 +

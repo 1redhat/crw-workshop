@@ -21,4 +21,4 @@ modules:
   50-dev-access:
     name: Developer Access
   51-getting-started:
-    name: Getting Started
+    name: Getting Started in the IDE

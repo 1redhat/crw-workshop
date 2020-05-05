@@ -17,7 +17,7 @@ modules:
   13-monitoring-usage:
     name: monitoring
   14-admin-dev-console:
-    name: developer console
+    name: Developer Console
   50-dev-access:
     name: Developer Access
   51-getting-started:

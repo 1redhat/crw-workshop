@@ -17,5 +17,9 @@ modules:
   - 01-verify-connectivity 
   - 10-install
   - 11-console-link
+  - 11-install-db
+  - 12-assign-limit-ranges-and-quotas
+  - 13-monitoring-usage
+  - 14-admin-dev-console
   - 50-dev-access
   - 51-getting-started

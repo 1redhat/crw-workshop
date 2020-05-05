@@ -1,0 +1,15 @@
+[[plugins]]
+== Working with Plugins
+
+In this lab you will learn how to work with the plugins that ship with CodeReady Workspaces and how to port a VS Code plugin.
+
+=== Plugin Library (Catalog?)
+CodeReady Workspaces is deployed with a plugin registry of all the plugins that have already been ported to CodeReady Workspaces.
+
+To browse the catalog of available plugins select *View → Plugins* from the main menu.
+
+To view the raw plugin registry visit `/v3/plugins/index.json`.
+
+
+=== Porting a plugin
+

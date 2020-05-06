@@ -10,13 +10,13 @@ Before checking out the monitoring stack, let take a look at the Cluster and Pro
 . In the left panel, navigate to the *Home → Dashboards* section.
 . This is the Cluster Dashboard
 
-image::cluster-dashboard.png[image]
+image::cluster-dashboard.png[cluster dashboard]
 
 . In the left panel, navigate to the *Home → Projects* section.
 . Click onto one of the projects in the list.
 . This will show you the Project Dashboard. It give a summary of the project details, inventory, activity, events and more.
 
-image::project-dashboard.png[image]
+image::project-dashboard.png[project dashboard]
 
 
 === Check out the Monitor from Administrator Console

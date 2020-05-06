@@ -17,16 +17,18 @@ Limit Ranges can be set on an existing project or a brand new projects. Dependin
 ==== Configure Limits Ranges and Quotas
 
 . For this exercise we will be going the "brand new project" route. Create this project called limits-quotas
-
-  ....
-  $ oc new-project limits-quotas
-  ....
++
+[source, yaml]
+----
+$ oc new-project limits-quotas
+----
 
 . Assign to user1
-
-  ....
-  $ oc policy add-role-to-user admin user1 -n limits-quotas
-  ....
++
+[source, yaml]
+----
+$ oc policy add-role-to-user admin user1 -n limits-quotas
+----
 
 . In the Web Console, login as user1. You should see limits-quotas listed; click on it to go to the overview page.
 
@@ -43,23 +45,24 @@ Limit Ranges can be set on an existing project or a brand new projects. Dependin
 . In the left panel, navigate to the *Administration → Limit Ranges*
 
 . click 'Create Limit Range', paste the following YAML to the text area.
-
-  ....
-  apiVersion: v1
-  kind: LimitRange
-  metadata:
-    name: resource-limits
-    namespace: openshift-operators
-  spec:
-    limits:
-      - type: "Container"
-        default:
-          cpu: "1"
-          memory: "1Gi"
-        defaultRequest:
-          cpu: "500m"
-          memory: "500Mi"
-  ....
++
+[source, yaml]
+----
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: resource-limits
+  namespace: openshift-operators
+spec:
+  limits:
+    - type: "Container"
+      default:
+        cpu: "1"
+        memory: "1Gi"
+      defaultRequest:
+        cpu: "500m"
+        memory: "500Mi"
+----
 
 . Login back in as user1, click onto the limits-quota project.
 

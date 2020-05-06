@@ -3,15 +3,18 @@
 == Instructor Guide
 
 This is the guide to hep you to setup a workshop.
+=== Prerequisite
+
+1. To get an AWS account if you don't have one. Please check with your manager to get the contact info.
+2. If you don't have a login to cloud.redhat.com, please get reg
 
 === Setting up the guide
 
-1. To get an AWS account if you don't have one. Please check with your manager to get the contact info.
-2. Install aws-cli on your laptop or anywhere you like to install the OpenShift cluster from.
-3. Setup the AWS credential.
-4. Download the OpenShift installer and OpenShift CLI.
-5. Estimate the number of attendees.
-6. Use [#install-ocp-custom-config] to customize cluster size and create cluster.
+1. Install aws-cli on your laptop or anywhere you like to install the OpenShift cluster from.
+2. Setup the AWS credential.
+3. Download the OpenShift installer and OpenShift CLI.
+4. Estimate the number of attendees.
+5. Use [#install-ocp-custom-config] to customize cluster size and create cluster.
 
 === Setting up the workshop
 

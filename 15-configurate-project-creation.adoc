@@ -15,60 +15,125 @@ Since OpenShift is a self-service platform, we are going to configure the projec
 
 . Login in as `admin` via OC CLI
 . Generate a default project template
-
-  ....
-   $ oc adm create-bootstrap-project-template -o yaml > template.yaml
-  ....
++
+[source, yaml]
+----
+ $ oc adm create-bootstrap-project-template -o yaml > template.yaml
+----
 
 . The template.yaml should be similar as shown below.
-
-  ....
-  apiVersion: template.openshift.io/v1
-  kind: Template
++
+[source, yaml]
+----
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  creationTimestamp: null
+  name: project-request
+objects:
+- apiVersion: project.openshift.io/v1
+  kind: Project
+  metadata:
+    annotations:
+      openshift.io/description: ${PROJECT_DESCRIPTION}
+      openshift.io/display-name: ${PROJECT_DISPLAYNAME}
+      openshift.io/requester: ${PROJECT_REQUESTING_USER}
+    creationTimestamp: null
+    name: ${PROJECT_NAME}
+  spec: {}
+  status: {}
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
   metadata:
     creationTimestamp: null
-    name: project-request
-  objects:
-  - apiVersion: project.openshift.io/v1
-    kind: Project
-    metadata:
-      annotations:
-        openshift.io/description: ${PROJECT_DESCRIPTION}
-        openshift.io/display-name: ${PROJECT_DISPLAYNAME}
-        openshift.io/requester: ${PROJECT_REQUESTING_USER}
-      creationTimestamp: null
-      name: ${PROJECT_NAME}
-    spec: {}
-    status: {}
-  - apiVersion: rbac.authorization.k8s.io/v1
-    kind: RoleBinding
-    metadata:
-      creationTimestamp: null
-      name: admin
-      namespace: ${PROJECT_NAME}
-    roleRef:
-      apiGroup: rbac.authorization.k8s.io
-      kind: ClusterRole
-      name: admin
-    subjects:
-    - apiGroup: rbac.authorization.k8s.io
-      kind: User
-      name: ${PROJECT_ADMIN_USER}
-  parameters:
-  - name: PROJECT_NAME
-  - name: PROJECT_DISPLAYNAME
-  - name: PROJECT_DESCRIPTION
-  - name: PROJECT_ADMIN_USER
-  - name: PROJECT_REQUESTING_USER
-  ....
+    name: admin
+    namespace: ${PROJECT_NAME}
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: admin
+  subjects:
+  - apiGroup: rbac.authorization.k8s.io
+    kind: User
+    name: ${PROJECT_ADMIN_USER}
+parameters:
+- name: PROJECT_NAME
+- name: PROJECT_DISPLAYNAME
+- name: PROJECT_DESCRIPTION
+- name: PROJECT_ADMIN_USER
+- name: PROJECT_REQUESTING_USER
+----
 
 . Now having `ResourceQuota` and `LimitRange` objects ready. Objects are shown as below.
++
+[source, yaml]
+----
+- apiVersion: v1
+kind: "LimitRange"
+metadata:
+  name: project-limits
+spec:
+  limits:
+    - type: "Container"
+      default:
+        cpu: "1"
+        memory: "1Gi"
+      defaultRequest:
+        cpu: "500m"
+        memory: "500Mi"
+- apiVersion: v1
+  kind: ResourceQuota
+  metadata:
+    name: project-quota
+  spec:
+    hard:
+      pods: "10"
+      requests.cpu: "4"
+      requests.memory: 8Gi
+      limits.cpu: "6"
+      limits.memory: 16Gi
+      requests.storage: "20G"
+----
 
-  ....
-  - apiVersion: v1
+. Adding the above objects to the project template as shown below.
++
+[source, yaml]
+----
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  creationTimestamp: null
+  name: project-request
+objects:
+- apiVersion: project.openshift.io/v1
+  kind: Project
+  metadata:
+    annotations:
+      openshift.io/description: ${PROJECT_DESCRIPTION}
+      openshift.io/display-name: ${PROJECT_DISPLAYNAME}
+      openshift.io/requester: ${PROJECT_REQUESTING_USER}
+    creationTimestamp: null
+    name: ${PROJECT_NAME}
+  spec: {}
+  status: {}
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    creationTimestamp: null
+    name: admin
+    namespace: ${PROJECT_NAME}
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: admin
+  subjects:
+  - apiGroup: rbac.authorization.k8s.io
+    kind: User
+    name: ${PROJECT_ADMIN_USER}
+- apiVersion: v1
   kind: "LimitRange"
   metadata:
-    name: project-limits
+    name: ${PROJECT_NAME}-limits
   spec:
     limits:
       - type: "Container"
@@ -78,93 +143,33 @@ Since OpenShift is a self-service platform, we are going to configure the projec
         defaultRequest:
           cpu: "500m"
           memory: "500Mi"
-  - apiVersion: v1
-    kind: ResourceQuota
-    metadata:
-      name: project-quota
-    spec:
-      hard:
-        pods: "10"
-        requests.cpu: "4"
-        requests.memory: 8Gi
-        limits.cpu: "6"
-        limits.memory: 16Gi
-        requests.storage: "20G"
-  ....
-
-. Adding the above objects to the project template as shown below.
-
-  ....
-  apiVersion: template.openshift.io/v1
-  kind: Template
+- apiVersion: v1
+  kind: ResourceQuota
   metadata:
-    creationTimestamp: null
-    name: project-request
-  objects:
-  - apiVersion: project.openshift.io/v1
-    kind: Project
-    metadata:
-      annotations:
-        openshift.io/description: ${PROJECT_DESCRIPTION}
-        openshift.io/display-name: ${PROJECT_DISPLAYNAME}
-        openshift.io/requester: ${PROJECT_REQUESTING_USER}
-      creationTimestamp: null
-      name: ${PROJECT_NAME}
-    spec: {}
-    status: {}
-  - apiVersion: rbac.authorization.k8s.io/v1
-    kind: RoleBinding
-    metadata:
-      creationTimestamp: null
-      name: admin
-      namespace: ${PROJECT_NAME}
-    roleRef:
-      apiGroup: rbac.authorization.k8s.io
-      kind: ClusterRole
-      name: admin
-    subjects:
-    - apiGroup: rbac.authorization.k8s.io
-      kind: User
-      name: ${PROJECT_ADMIN_USER}
-  - apiVersion: v1
-    kind: "LimitRange"
-    metadata:
-      name: ${PROJECT_NAME}-limits
-    spec:
-      limits:
-        - type: "Container"
-          default:
-            cpu: "1"
-            memory: "1Gi"
-          defaultRequest:
-            cpu: "500m"
-            memory: "500Mi"
-  - apiVersion: v1
-    kind: ResourceQuota
-    metadata:
-      name: ${PROJECT_NAME}-quota
-    spec:
-      hard:
-        pods: "10"
-        requests.cpu: "4"
-        requests.memory: 8Gi
-        limits.cpu: "6"
-        limits.memory: 16Gi
-        requests.storage: "20G"
-  parameters:
-  - name: PROJECT_NAME
-  - name: PROJECT_DISPLAYNAME
-  - name: PROJECT_DESCRIPTION
-  - name: PROJECT_ADMIN_USER
-  - name: PROJECT_REQUESTING_USER
-  ....
+    name: ${PROJECT_NAME}-quota
+  spec:
+    hard:
+      pods: "10"
+      requests.cpu: "4"
+      requests.memory: 8Gi
+      limits.cpu: "6"
+      limits.memory: 16Gi
+      requests.storage: "20G"
+parameters:
+- name: PROJECT_NAME
+- name: PROJECT_DISPLAYNAME
+- name: PROJECT_DESCRIPTION
+- name: PROJECT_ADMIN_USER
+- name: PROJECT_REQUESTING_USER
+----
 
 . The project template must be created in openshift-config namespace. Load the template into the namespace.
-
-  ....
-  $ oc create -f template.yaml -n openshift-config
-  template.template.openshift.io/project-request created
-  ....
++
+[source, yaml]
+----
+$ oc create -f template.yaml -n openshift-config
+template.template.openshift.io/project-request created
+----
 
 . Login to the Administrator Console as admin
 . In the left panel, navigate to the *Administration → Cluster Settings*.
@@ -172,12 +177,13 @@ Since OpenShift is a self-service platform, we are going to configure the projec
 . Click `project` from the list
 . Click `YAML` to edit the object
 . Update the file with the following information to replace `spec: {}`
-
-  ....
-  spec:
-  projectRequestTemplate:
-    name: project-request
-  ....
++
+[source, yaml]
+----
+spec:
+projectRequestTemplate:
+  name: project-request
+----
 
 . Click save.
 

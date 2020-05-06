@@ -18,7 +18,7 @@ Limit Ranges can be set on an existing project or a brand new projects. Dependin
 
 . For this exercise we will be going the "brand new project" route. Create this project called limits-quotas
 
-=== Create a project in OpenShift
+==== Create a project in OpenShift
 This section describes how to create the a new project in OpenShift web console.
 
 [NOTE]
@@ -35,7 +35,7 @@ Replace `user1` to your assigned dev user.
 .. In the *Display Name* field, type `Limits and Quotas Test`.
 . Click the `Create` button.
 
-=== Assign User to a project
+==== Assign User to a project
 In this example, I use `user1`.
 . In the left panel, navigate to the *User Management → Users* section.
 . Click onto the 3-dots icon and select `Edit User`
@@ -51,7 +51,8 @@ In this example, I use `user1`.
 
 image::role-binding.png[User Role Binding]
 
-=== Adding Limit Range and Quota to a project
+==== Adding Limit Range and Quota to a project
+
 . In the Web Console, login as admin. You should see limits-quotas listed; click on it to go to the overview page.
 . In the left panel, navigate to the *Administration → Resource Quotas* section.
 . In the left panel, navigate to the *Administration → Limit Ranges* section.
@@ -88,25 +89,15 @@ image::resource-quotas.png[image]
 ==== Deploy an applicate to generate usage
 
 . Login web console as user1
-
 . Switch to Developer Console by havigating to *</> Developer* from the top of left menu
-
 . In the left panel, navigate to the *Topology* section.
-
 . Click `Container Image` tile
-
 . Enter `redhatworkshops/welcome-php` as the image name
-
 . Click the search icon
-
 . Enter `welcome-limits` in the field for `Application Name` and `Name`
-
 . Click `Resource Limits` under `Advance Option`
-
 . Enter 10 for CPU request, 100 for CPU limit, 128 for memory request, and 256 for memory limit
-
 . Click `Create`
-
 . In the left panel, navigate to the *Advanced → Project Details* section.
 
 image::project-details.png[image]
@@ -114,13 +105,9 @@ image::project-details.png[image]
 ==== Testing the quota
 
 . Continue to stay on the Developer Console
-
 . In the left panel, navigate to the *Topology* section.
-
 . Click in the middle of the circle and click onto deployment name `welcome-limits`
-
 . Use the arrow up to increase pod number to 5
-
 . you will notice the deployment only spin up 4 pods instead of 5
 
   image::deployment-quota.png[image]

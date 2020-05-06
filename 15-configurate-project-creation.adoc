@@ -196,3 +196,5 @@ Since OpenShift is a self-service platform, we are going to configure the projec
 . Object `ResourceQuotas` is automatically created at the project creation.
 . In the left panel, navigate to the *Administration → Limit Ranges*.
 . Object `LimitRange` is created as well.
+
+The result is confirmed that the project template is configured.

@@ -10,6 +10,8 @@ modules:
     name: Admin and Developer Console
   12-assign-limit-ranges-and-quotas:
     name: Limit Ranges and Quotas
+  15-configurate-project-creation:
+    name: Configure Project Template
   10-install:
     name: Install CodeReady Workspaces
   11-console-link:

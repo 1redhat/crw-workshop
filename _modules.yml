@@ -8,14 +8,14 @@ modules:
     name: Verify Connectivity
   14-admin-dev-console:
     name: Admin and Developer Console
+  12-assign-limit-ranges-and-quotas:
+    name: Limit Ranges and Quotas
   10-install:
     name: Install CodeReady Workspaces
   11-console-link:
     name: Link to CodeReady Workspaces
   11-install-db:
     name: Database Operator
-  12-assign-limit-ranges-and-quotas:
-    name: Limit Ranges and Quotas
   13-monitoring-usage:
     name: Monitoring
   50-dev-access:

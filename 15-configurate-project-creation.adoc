@@ -16,7 +16,7 @@ Since OpenShift is a self-service platform, we are going to configure the projec
 . Login in as `admin` via OC CLI
 . Generate a default project template
 +
-[source, yaml]
+[source, script]
 ----
  $ oc adm create-bootstrap-project-template -o yaml > template.yaml
 ----
@@ -165,7 +165,7 @@ parameters:
 
 . The project template must be created in openshift-config namespace. Load the template into the namespace.
 +
-[source, yaml]
+[source, script]
 ----
 $ oc create -f template.yaml -n openshift-config
 template.template.openshift.io/project-request created

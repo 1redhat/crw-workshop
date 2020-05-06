@@ -1,7 +1,7 @@
 [[assign-limit-ranges-and-quotas]]
 == Assigning Limit Ranges and Quotas
 
-In this lab you will learn how to set up limit ranges and quotas. You will also learn how to assign these to project namespaces.
+In this lab you will learn how to set up limit ranges and quotas. You will also learn how to assign resources to project namespaces.
 
 === Limit Ranges
 
@@ -17,33 +17,48 @@ Limit Ranges can be set on an existing project or a brand new projects. Dependin
 ==== Configure Limits Ranges and Quotas
 
 . For this exercise we will be going the "brand new project" route. Create this project called limits-quotas
-+
-[source, yaml]
-----
-$ oc new-project limits-quotas
-----
 
-. Assign to user1
-+
-[source, yaml]
-----
-$ oc policy add-role-to-user admin user1 -n limits-quotas
-----
+=== Create a project in OpenShift
+This section describes how to create the a new project in OpenShift web console.
 
-. In the Web Console, login as user1. You should see limits-quotas listed; click on it to go to the overview page.
+[NOTE]
+====
+Every user should have an admin and dev users for the workshop.
+Replace `user1` to your assigned dev user.
+====
 
+. Open the OpenShift web console and login as admin user.
+. In the left panel, navigate to `Projects`.
+. Click the `Create Project` button.
+. Enter the project details:
+.. In the *Name* field, type `limits-quotas`.
+.. In the *Display Name* field, type `Limits and Quotas Test`.
+. Click the `Create` button.
+
+=== Assign User to a project
+In this example, I use `user1`.
+. In the left panel, navigate to the *User Management → Users* section.
+. Click onto the 3-dots icon and select `Edit User`
+. Click `Role Bindings`
+. Click `Create Role Binding`
+. Select `Namespace Role Binding`
+. Enter `user1-admin-ns`
+. Select `limits-quotas` for `Namespace`
+. Select `admin` for `Role Name`
+. Select `User` for `Subject`
+. Add `user1` as `Subject Name`
+. Click Create
+
+image::role-binding.png[User Role Binding]
+
+=== Adding Limit Range and Quota to a project
+. In the Web Console, login as admin. You should see limits-quotas listed; click on it to go to the overview page.
 . In the left panel, navigate to the *Administration → Resource Quotas* section.
-
 . In the left panel, navigate to the *Administration → Limit Ranges* section.
-
 . It should show that there is no limits or quotas set. This means that any application created in this namespace can use as much resource that is available (default behavior). Now on the command-line (as system:admin) create a yaml file called limits.yaml.
-
 . Login to the web console as admin1, in the left panel, navigate to the *Administration → Resource Quotas*
-
 . click 'Create Resource Quota', use the default quota and click `Create`.
-
 . In the left panel, navigate to the *Administration → Limit Ranges*
-
 . click 'Create Limit Range', paste the following YAML to the text area.
 +
 [source, yaml]

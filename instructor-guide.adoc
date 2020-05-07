@@ -6,7 +6,7 @@ This is the guide to hep you to setup a workshop.
 === Prerequisite
 
 1. To get an AWS account if you don't have one. Please check with your manager to get the contact info.
-2. If you don't have a login to cloud.redhat.com, please get reg
+2. If you don't have a login to cloud.redhat.com, please get register. 
 
 === Setting up the guide
 

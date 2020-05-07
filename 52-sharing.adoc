@@ -19,6 +19,6 @@ image::share.png[image]
 image::recent-workspace.png[image]
 +
 . Click on it
-. Both students should go to the *GreetingsService.java*
-. Have the fellow student change code within the file.
-. Notice both users see the code changes.
+. Now you and the fellow student open the *GreetingsService.java* file in the IDE.
+. One of the students change code in the file. 
+. Notice the other one can see the changes in thier IDE.

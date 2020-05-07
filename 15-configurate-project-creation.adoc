@@ -1,26 +1,29 @@
-:sectnums:
-
 [[configure-project-creation]]
 == Configure Project Creation
 
-In this lab you will learn how to customize the template for creating of a new project.
-If you are the administrator, you may want to manage the cluster resource accordingly. A way to ensure that no project will consume all the resouces is by setting limit range and quota when creating a project.
+Now you know how to create quota and limitrange for your project.
+In this lab you will learn how to creater and customize the project template that you can use to configure the default limits and quotas for the cluster.
+If you are the administrator, you may want to manage the cluster resource accordingly. A way to ensure that no project will consume all the resources is by setting limit range and quota when creating a project.
 
 === Modify the project template
 
 By default, there is no limits and quotas set when project was created.
-Since OpenShift is a self-service platform, we are going to configure the project template. Once we added the default configuration to the project, project will be created with the specific configuration.
+Since OpenShift is a self-service platform, we are going to configure the project template. Once we have set the default resources for each project, project will be created with the specific configuration.
 
 === Steps
 
 . Login in as `admin` via OC CLI
++
+[source,shell]
+----
+$ oc login -u <admin-username> {{API_URL}}
+----
 . Generate a default project template
 +
-[source, script]
+[source,shell]
 ----
  $ oc adm create-bootstrap-project-template -o yaml > template.yaml
 ----
-
 . The template.yaml should be similar as shown below.
 +
 [source, yaml]
@@ -69,18 +72,18 @@ parameters:
 [source, yaml]
 ----
 - apiVersion: v1
-kind: "LimitRange"
-metadata:
-  name: project-limits
-spec:
-  limits:
-    - type: "Container"
-      default:
-        cpu: "1"
-        memory: "1Gi"
-      defaultRequest:
-        cpu: "500m"
-        memory: "500Mi"
+  kind: "LimitRange"
+  metadata:
+    name: project-limits
+  spec:
+    limits:
+      - type: "Container"
+        default:
+          cpu: "1"
+          memory: "1Gi"
+        defaultRequest:
+          cpu: "500m"
+          memory: "500Mi"
 - apiVersion: v1
   kind: ResourceQuota
   metadata:
@@ -170,8 +173,7 @@ parameters:
 $ oc create -f template.yaml -n openshift-config
 template.template.openshift.io/project-request created
 ----
-
-. Login to the Administrator Console as admin
+. Login as an admin user and switch back to Administrator Console.
 . In the left panel, navigate to the *Administration → Cluster Settings*.
 . Click `Global Configuration`
 . Click `project` from the list
@@ -181,10 +183,9 @@ template.template.openshift.io/project-request created
 [source, yaml]
 ----
 spec:
-projectRequestTemplate:
-  name: project-request
+  projectRequestTemplate:
+    name: project-request
 ----
-
 . Click save.
 
 === Confirm the changes
@@ -194,10 +195,7 @@ projectRequestTemplate:
 . Click `Create Project`
 . Enter `test-<UserName>` as project name
 . You will get to the project Dashboard and scroll down to `Resource Quotas` sections.
-. Click onto the resource quotas name next to the `RQ`
-
-  image::project-template-rq.png[Resource Quota]
-
+. Click onto the resource quotas name next to the `RQ`   image:project-template-rq.png[Resource Quota]
 . Click YAML to see the details from the Resource Quota page.
 . Object `ResourceQuotas` is automatically created at the project creation.
 . In the left panel, navigate to the *Administration → Limit Ranges*.

@@ -27,10 +27,10 @@ This section describes how to install the CodeReady Workspaces Operator in OpenS
 . In the *A specific namespace on the cluster field*, in the cluster drop-down .list, select the namespace into which the previous version of the CodeReady Workspaces Operator was installed.
 . Click the `Subscribe` button.
 . In the left panel, navigate to the *Operators → Installed Operators* section.
-. Red Hat CodeReady Workspaces is displayed as an installed Operator having the *InstallSucceeded* status.
+. Red Hat CodeReady Workspaces is displayed as an installed Operator having the *Succeeded* status.
 . Click on the *Red Hat CodeReady Workspaces* name in the list of installed operators.
-. Navigate to the *Overview* tab.
-. In the *Conditions* sections at the bottom of the page, wait for this message: `install strategy completed with no errors`.
+. Navigate to the *Subscription* tab.
+. In the *Update Staus* shows `Uptodate` and `1 installed`
 . Navigate to the *Events* tab.
 . Wait for this message: `install strategy completed with no errors`.
 
@@ -42,7 +42,7 @@ This section describes how to install CodeReady Workspaces using the CodeReady W
 . Click *Red Hat CodeReady Workspaces* in the list of installed operators.
 . Click the *Create Instance* link in *Provided APIs* section.
 . The *Create CodeReady Workspaces Cluster* page is displayed.
-. Leave the default values as they are.
+. Update `tlsSupport:` to false.
 . Click the `Create` button in the bottom-left corner of the window.
 . The codeready cluster is created.
 
@@ -57,7 +57,7 @@ This section describes how to view the state of the CodeReady Workspaces instanc
 Click *Red Hat CodeReady Workspaces* in the list of installed operators.
 . Navigate to the *CodeReady Workspaces Cluster*  tab.
 . Click *codeready-workspaces* CheCluster in the table.
-. The *Overview* tab is displayed.
+. The *Details* tab is displayed.
 . Watch the content of the *Message* field. The field contain error messages, if any. The expected content is `None`.
 . Navigate to the *Resources* tab.
 . The screen displays the state of the resources assigned to the CodeReady Workspaces deployment.
@@ -76,4 +76,3 @@ This section descibes how to find the CodeReady Workspaces instance URL in OpenS
 . The *Overview* tab is displayed.
 . Read the value of the *CodeReady Workspaces URL* field.
 . Note this URL for a later step
-

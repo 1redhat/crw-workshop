@@ -18,7 +18,7 @@ image::share.png[image]
 +
 image::recent-workspace.png[image]
 +
-+ Click on it
-+ Both students should go to the *GreetingsService.java*
-+ Have the fellow student change code within the file.
-+ Notice both users see the code changes.
+. Click on it
+. Both students should go to the *GreetingsService.java*
+. Have the fellow student change code within the file.
+. Notice both users see the code changes.

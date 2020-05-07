@@ -1,0 +1,24 @@
+[[sharing]]
+== Sharing your workspace with a co-worker
+Code Ready Workspaces has a sharing feature that allows developers to share the code they are working on with others.  Its a bit like google docs for code.
+
+We will continue to use the workspace we created in the previous lab to shar it with others
+
+=== Sharing your workspace
+. In the menu bar go to *File → Share*.
+. This brings you to settings page.  click on the *Share* tab like below
++
+image::share.png[image]
++
+. Click on the blue *Add Developer* button in the upper left corner.
+. Add a fellow student using their email address.
+. Click the green *open* button in the upper right corner
+. Have the fellow student refresh thier browser
+. In the *RECENT WORKSPACES* they will have a new workspace with the same name as yours
++
+image::recent-workspace.png[image]
++
++ Click on it
++ Both students should go to the *GreetingsService.java*
++ Have the fellow student change code within the file.
++ Notice both users see the code changes.

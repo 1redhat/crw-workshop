@@ -24,3 +24,5 @@ modules:
     name: Developer Access
   51-getting-started:
     name: Getting Started in the IDE
+  52-sharing:
+    name: Workspace sharing

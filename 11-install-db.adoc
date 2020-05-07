@@ -1,9 +1,13 @@
 [[install-db]]
 == Installing Database Operator
 
-In this Lab we install a database operator on OpenShift.
+In this Lab we install a database operator on OpenShift. Administrator can configure the database operators on the cluster and make them available for developer to create databases easily.
 
-NOTE: These steps require an administrator account on a running instance of OpenShift 4
+[NOTE]
+====
+These steps require an administrator account on the cluster
+====
+
 
 === Installing the CockroachDB Operator in OpenShift 4 web console
 This section describes how to install the CockroachDB Operator in OpenShift 4 web console.

@@ -26,11 +26,11 @@ components:
         attributes:
           path: /fruits.html
       - name: legumes-endpoint
-        port: 8080
+        port: 8090
         attributes:
           path: /legumes
       - name: legumes-ui
-        port: 8080
+        port: 8090
         attributes:
           path: /legumes.html          
     memoryLimit: 512Mi
@@ -74,7 +74,7 @@ commands:
     actions:
       - workdir: '${CHE_PROJECTS_ROOT}/legume-service'
         type: exec
-        command: 'mvn compile quarkus:dev'
+        command: 'mvn compile quarkus:dev -Ddebug=5015 -Dquarkus.http.port=8090'
         component: maven        
   - name: Attach remote debugger
     actions:

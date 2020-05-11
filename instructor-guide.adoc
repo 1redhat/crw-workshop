@@ -15,7 +15,7 @@ This is the guide to hep you to setup a workshop.
 2. Setup the AWS credential.
 3. Download the OpenShift installer and OpenShift CLI.
 4. Estimate the number of attendees.
-5. Use [#install-ocp-custom-config] to customize cluster size and create cluster.
+5. Use install custom config link:#install-ocp-custom-config.adoc[doc] to customize cluster size and create cluster.
 
 === Setting up the workshop
 

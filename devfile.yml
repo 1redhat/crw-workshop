@@ -26,11 +26,11 @@ components:
         attributes:
           path: /fruits.html
       - name: legumes-endpoint
-        port: 8080
+        port: 8090
         attributes:
           path: /legumes
       - name: legumes-ui
-        port: 8080
+        port: 8090
         attributes:
           path: /legumes.html          
     memoryLimit: 512Mi

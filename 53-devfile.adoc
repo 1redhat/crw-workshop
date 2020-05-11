@@ -52,3 +52,8 @@ image::recent-workspace.png[image]
 . Now you and the fellow student open the *GreetingsService.java* file in the IDE.
 . One of the students change code in the file. 
 . Notice the other one can see the changes in thier IDE.
+
+
+https://$CODE_READY_HOST/f?url=https://github.com/aerogear/ionic-showcase/f?url=https://raw.githubusercontent.com/1redhat/crw-workshop/master/devfile.yml
+
+http://codeready-codeready.apps.clustere4f9.sandbox596.opentlc.com/f?url=https://raw.githubusercontent.com/1redhat/crw-workshop/master/devfile.yml

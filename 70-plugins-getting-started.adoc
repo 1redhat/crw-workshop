@@ -33,11 +33,11 @@ NOTE: There are some nuances to consider when porting more complex extensions.
 === Let's get started...
 ==== Schema Definition
 . Let's start by creating a new Git respository based off the templated provided for you in the `https://github.com/readyhat/che-plugin-blueprint[readyhat/che-plugin-blueprint]` repository. 
-image:70-plugin-template-start.png[image]
+image:;70-plugin-template-start.png[image]
 . Name your repository *che-plugin-vim* and make sure the respository is public.
-image:70-create-repository.png[image]
+image::70-create-repository.png[image]
 . We will use the GitHub editor to modify our schema file. With the `mater` branch selected click to open the `meta.yaml` and then click the `edit` icon.
-image:70-edit-schema-definition.png[image]
+image::70-edit-schema-definition.png[image]
 . Edit the `meta.yaml` schema definition with the values below and commit to your `master` branch: (please take note of the values wrapped in curly braces. For instance, `{plugin_version}`` _should_ coincide with the VS Code extension you're porting. This will be important later.)
 [source,yaml]
 ----
@@ -58,28 +58,28 @@ spec:
   extensions:
     - https://github.com/{your_repo}/che-plugin-vim/raw/{plugin_version}/vscode-vim.vsix
 ----
-image:70-schema-definition-commit.png[image]
+image::70-schema-definition-commit.png[image]
 
 ==== Visual Studio Code Extension
 . Now we will download the `.vsix` Visual Studio Extension to your local filesystem. Navigate to the https://marketplace.visualstudio.com/items?itemName=vscodevim.vim[Microsoft Visual Studio Code Marketplace] to find the Vim extension and download it. *IMPORTANT: When downloading the extension be sure to rename it `vscode-vim.vsix`!*
-image:70-vscode-marketplace-vim.png[image]
+image::70-vscode-marketplace-vim.png[image]
 . Once downloaded return to the root directory of your GitHub repository and click *Upload files*
-image:70-repository-upload-file.png[image]
+image::70-repository-upload-file.png[image]
 . Now upload the `vscode-vim.vsix` plugin to the `mater` branch with a commit message.
-image:70-upload-vscode-vim-extension.png[image]
+image::70-upload-vscode-vim-extension.png[image]
 . Now we will tag a release by clicking *releases* on our repository dashboard.
-image:70-repository-releases.png[image]
+image::70-repository-releases.png[image]
 . Provide the appropriate version and release information on the *Release* page and click *Publish release*
-image:70-repository-publish-release.png[image]
+image::70-repository-publish-release.png[image]
 . Lastly, copy the link to your tagged release of the `meta.yaml` file by clicking the *Version tag → meta.yaml → Raw* and copying the URL from the address bar.
-image:70-repository-release-selector.png[image]
-image:70-repository-release-raw.png[image]
+image::70-repository-release-selector.png[image]
+image::70-repository-release-raw.png[image]
 
 ==== CodeReady Workspaces Plugin
 Now we'll install the ported plugin to your workspace.
 
 . Return to your isntance of CodeReady Workspaces Dashboard and select a workspaces.
-image:70-crc-select-workspace.png[image]
+image::70-crc-select-workspace.png[image]
 . Navigate to the *Devfile* tab, locate the section labaled `components:` and add a new component (NOTE: be sure to replace `{plugin-repository}` with your tagged release path to the `meta.yaml` file you just coppied.):
 [source,yaml]
 ----

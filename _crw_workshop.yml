@@ -24,3 +24,4 @@ modules:
   - 50-dev-access
   - 51-getting-started
   - 52-sharing
+  - 53-devfile

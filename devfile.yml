@@ -1,6 +1,6 @@
 apiVersion: 1.0.0
 metadata:
-  name: fruit-service
+  name: services-
 projects:
     - name: fruit-service
       source:
@@ -74,7 +74,7 @@ commands:
     actions:
       - workdir: '${CHE_PROJECTS_ROOT}/legume-service'
         type: exec
-        command: 'mvn compile quarkus:dev'
+        command: 'mvn compile quarkus:dev -Ddebug=5015 -Dquarkus.http.port=8090'
         component: maven        
   - name: Attach remote debugger
     actions:

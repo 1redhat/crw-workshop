@@ -1,34 +1,6 @@
 [[plugins]]
-= Working with Plugins
-In this lab you will learn how to work with the plugins that ship with CodeReady Workspaces, how to add plugins to the CodeReady Workspaces plugin registry, how to add external plugin registires, and how to port a VS Code plugin.
-
-== Plugin Registry
-CodeReady Workspaces is deployed with a plugin registry of all the plugins that have already been ported to CodeReady Workspaces.
-
-To browse the catalog of available plugins select *View → Plugins* from the main menu.
-
-To view the raw plugin registry visit `/v3/plugins/index.json`.
-
-3 ways 1) add plugin to registry 2) add external registry 3) add plugin repository
-
-=== Local Plugin Registry
-
-TODO: continue here
-
-=== Remote Plugin Registry
-
 == Porting a plugin
-Porting Visual Studio Code extensions to Eclipse Che plugins is a simple
-TODO: continue here
-
-In today's workshop we will port the https://marketplace.visualstudio.com/items?itemName=vscodevim.vim[Visual Studio Code Vim] emulator extension.
-
-*Prerequisites*:
-
-* Read/write access to a GitHub repository for the this project
-* Read/write access to a CRW Workspace
-
-NOTE: There are some nuances to consider when porting more complex extensions.
+In this workshop we will port the https://marketplace.visualstudio.com/items?itemName=vscodevim.vim[Visual Studio Code Vim] emulator extension.
 
 === Let's get started...
 ==== Schema Definition

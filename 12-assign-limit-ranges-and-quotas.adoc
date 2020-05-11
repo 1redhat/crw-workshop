@@ -1,7 +1,7 @@
 [[assign-limit-ranges-and-quotas]]
 == Assigning Limit Ranges and Quotas
 
-In this lab you will learn how to set up limit ranges and quotas. You will also learn how to assign these to project namespaces.
+In this lab you will learn how to set up limit ranges and quotas. You will also learn how to assign resources to project namespaces.
 
 === Limit Ranges
 
@@ -16,110 +16,101 @@ Limit Ranges can be set on an existing project or a brand new projects. Dependin
 
 ==== Configure Limits Ranges and Quotas
 
-1) For this exercise we will be going the "brand new project" route. Create this project called limits-quotas
-....
-$ oc new-project limits-quotas
-....
-2) Assign to user1
-....
-$ oc policy add-role-to-user admin user1 -n limits-quotas
-....
-3) In the Web Console, login as user1. You should see limits-quotas listed; click on it to go to the overview page.
+For this exercise we will be going the "brand new project" route. Create this project called limits-quotas
 
-4) In the left panel, navigate to the *Administration → Resource Quotas* section.
+[NOTE]
+====
+Every user should have an admin and dev users for the workshop.
+Replace `user1` to your assigned dev user.
+====
 
-5) In the left panel, navigate to the *Administration → Limit Ranges* section.
+==== Create a project in OpenShift
 
-6) It should show that there is no limits or quotas set. This means that any application created in this namespace can use as much resource that is available (default behavior). Now on the command-line (as system:admin) create a yaml file called limits.yaml.
+. Open the OpenShift web console and login as admin user.
+. In the left panel, navigate to the *Home → Projects* section.
+. Click the `Create Project` button.
+. Enter the project details:
+.. In the *Name* field, type `limits-quotas`.
+.. In the *Display Name* field, type `Limits and Quotas Test`.
+. Click the `Create` button.
 
-7) Login to the web console as admin1, in the left panel, navigate to the *Administration → Resource Quotas*
+==== Assign User to a project
 
-8) click 'Create Resource Quota', use the default quota and click `Create`.
+. In the left panel, navigate to the *User Management → Users* section.
+. Click onto the 3-dots icon and select `Edit User`
+. Click `Role Bindings`
+. Click `Create Role Binding`
+. Select `Namespace Role Binding`
+. Enter `user1-admin-ns`
+. Select `limits-quotas` for `Namespace`
+. Select `admin` for `Role Name`
+. Select `User` for `Subject`
+. Add `user1` as `Subject Name`
+. Click Create
 
-9) In the left panel, navigate to the *Administration → Limit Ranges*
+image::role-binding.png[User Role Binding]
 
-10) click 'Create Limit Range', paste the following YAML to the text area.
-....
+==== Adding Limit Range and Quota to a project
+
+. In the Administrator Console, navigate to the *Home → Projects* section.
+. Type `limits-quotas` in the filter text box on the top left
+. Click onto `limits-quotas` and go to the overview page.
+. In the left panel, navigate to the *Administration → Resource Quotas* section.
+. In the left panel, navigate to the *Administration → Limit Ranges* section.
+. Both sections show that there is no limits or quotas set. This means that any application created in this namespace can use as much resource that is available (default behavior)
+. Click 'Create Limit Range', paste the following YAML to the text area.
++
+[source, yaml]
+----
 apiVersion: v1
 kind: LimitRange
 metadata:
-  name: resource-limits
-  namespace: openshift-operators
+  name: example-limits
+  namespace: limits-quotas
 spec:
   limits:
-    - type: "Pod"
-      max:
-        cpu: "2"
-        memory: "1Gi"
-      min:
-        cpu: "200m"
-        memory: "6Mi"
     - type: "Container"
-      max:
-        cpu: "2"
-        memory: "1Gi"
-      min:
-        cpu: "100m"
-        memory: "4Mi"
       default:
-        cpu: "300m"
-        memory: "200Mi"
+        cpu: "1"
+        memory: "1Gi"
       defaultRequest:
-        cpu: "200m"
-        memory: "100Mi"
-      maxLimitRequestRatio:
-        cpu: "10"
-....
-
-11) Login back in as user1, click onto the limits-quota project.
-
-12) In the left panel, navigate to the *Administration → Resource Quotas* section.
+        cpu: "500m"
+        memory: "500Mi"
+----
+. In the left panel, navigate to the *Administration → Resource Quotas*
+. Click 'Create Resource Quota'
+. For the purpose for the workshop, use the default quota. On the right on the panel, you can click `Samples` and download different quota samples YAMLs.
+. Click `Create`.
+. In the left panel, navigate to the *Administration → Resource Quotas* section.
 
 image::resource-quotas.png[image]
 
+
 ==== Deploy an applicate to generate usage
 
-1) Login web console as user1
-
-2) Switch to Developer Console by havigating to *</> Developer* from the top of left menu
-
-3) In the left panel, navigate to the *Topology* section.
-
-4) Click `Container Image` tile
-
-5) Enter `redhatworkshops/welcome-php` as the image name
-
-6) Click the search icon
-
-7) Enter `welcome-limits` in the field for `Application Name` and `Name`
-
-8) Click `Resource Limits` under `Advance Option`
-
-9) Enter 10 for CPU request, 100 for CPU limit, 128 for memory request, and 256 for memory limit
-
-10) Click `Create`
-
-11) In the left panel, navigate to the *Advanced → Project Details* section.
+. Login out as admin user by clicking on your username and select logout.
+. Login as your assigned dev username.
+. Switch to Developer Console by navigating to *</> Developer* from the top of left menu
+. In the left panel, navigate to the *Topology* section.
+. Click `Container Image` tile
+. Enter `docker.io/redhatworkshops/welcome-php` as the image name
+. Click the search icon
+. Enter `welcome-limits` in the field for `Application Name` and `Name`
+. Click `Create`
+. In the left panel, navigate to the *Advanced → Project Details* section. You will see the metrics is based on the quotas and limits.
 
 image::project-details.png[image]
 
 ==== Testing the quota
 
-1) Continue to stay on the Developer Console
+. Continue to stay on the Developer Console
+. In the left panel, navigate to the *Topology* section.
+. Click in the middle of the circle and click onto deployment name `welcome-limits`
+. Use the *arrow up* to increase pod number to 5
+. you will notice the deployment only spin up 2 pods instead of 5 image:deployment-quota.png[reach limits]
+. Click *Events* section.
 
-2) In the left panel, navigate to the *Topology* section.
-
-3) Click in the middle of the circle and click onto deployment name `welcome-limits`
-
-4) Use the arrow up to increase pod number to 5
-
-5) you will notice the deployment only spin up 4 pods instead of 5
-
-image::deployment-quota.png[image]
-
-6) In the left panel, navigate to the *Advanced → Events* section.
-
-image::quotaexceed-event.png[image]
+image::quotaexceed-event.png[exceeded resource event]
 
 ==== Conclusion
 In this lab you learned how to assign limits and quotas. You also learned how to assign these to a specific project and saw how it affected the creation of applications.

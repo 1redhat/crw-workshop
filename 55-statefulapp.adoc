@@ -1,0 +1,142 @@
+[[stateful-application]]
+== Create a Stateful Application
+In this lab you will deploy an existing application that requires a database. You will also start up a database instance via an available installed database operator.
+
+=== Create a project in OpenShift
+This section describes how to create the CodeReady Workspaces project in OpenShift web console.
+
+. Login as developer user to Developer Console
+. Navigate to the top and click onto the project name image:dev-project[dev project]
+. Click the `Create Project` button.
+. Enter the project details:
+.. In the *Name* field, type `statefulapp-<Username>`.
+.. In the *Display Name* field, type `Stateful App Example`.
+. Click the `Create` button.
+
+=== Create Database instance
+
+. In the left panel, navigate to the *Topology*.
+. Click onto `From Catalog` tile.
+. Click `CockroachDB` tile.
+. Click `Create`.
+. Update `Replicas: 3` to `Replicas: 1` in the YAML.
+. Update the memory to 500Mi and Storage 1Gi
++
+[source, yaml]
+----
+  Resources:
+    requests:
+      cpu: 100m
+      memory: 500Mi
+  InitPodResources: {}
+  Storage: 1Gi
+----
+. Click `Create`.
+. Under the `Topology`, Wait for the database instance start up completely as shown here image:database-ready.png[database instance]
+. Click onto the middle of the icon as shown here image:topology-db-view.png[db details]
+. You can see the summary of all the resources were being created.
+. The status of the pod is in `Running` means the database is ready to use.
+. Also note the service name with `-public`. In this example the public service name is `example-cockroachdb-public`
+
+=== Accessing the database instance and create table for the application
+
+.  In the left panel, navigate to the *More → Search*.
+. Click 'Resources' dropdown.
+. Type `cockroachdb` in the `search resource` textbox.
+. Click onto `Cockroachdb` from the list.
+. Click `example` or the one custom resource that listed.
+. Copy the command to create a client pod to access the database instance image:dbclient-cli.png[db client]
+. Go to a terminal, login as the developer user
++
+[source,shell]
+----
+$ oc login -u <dev-username> {{API_URL}}
+----
+. Switch context to the `statefulapp-<Username>` project
++
+[source,shell]
+----
+$ oc project <dev-username>
+----
+. Let's spin up the database client as a pod by paste the command that you get from the custom resource
++
+[source,shell]
+----
+$ kubectl run -it --rm cockroach-client \
+--image=cockroachdb/cockroach \
+--restart=Never \
+--command -- \
+./cockroach sql --insecure --host=example-cockroachdb-public.statefulapp-user1
+----
+. You will get the similar prompt after executing the command above.
++
+[source,shell]
+----
+If you don't see a command prompt, try pressing enter.
+'root@example-cockroachdb-public.statefulapp-user1:26257/defaultdb>
+----
+. you are now in the client pod, let's create the database table here using the following commands.
++
+[source,shell]
+----
+CREATE USER myuser;
+CREATE DATABASE customers;
+GRANT ALL ON DATABASE customers TO myuser;
+exit;
+----
+
+=== Deploy Application via Developer console
+
+. Fork the example Spring Boot Github repo from https://github.com/piggyvenus/springboot-cockroach
+. Login as developer user to Developer Console
+. In the left panel, navigate to the *+Add*.
+. Click `From Git` tile.
+. Enter the Enter the Git URL from your forked repo
+. Select `8` under `Builder Image Version`
+. Enter 'stateful-front' as `Application Name` and `Name` under General section.
+. Click `Create`.
+
+=== Update database service name and build
+
+. Go to the git repo and update `spring.datasource.url` in the file `src/main/resources/application.properties` as shown below
++
+[source,shell]
+----
+spring.datasource.url=jdbc:postgresql://example-cockroachdb-public:26257/customers?sslmode=disable
+----
+. Make sure your database service name replace `example-cockroachdb-public` to the one matches your deployment.
+. Commit changes
+. Go to Developer console
+. In the left panel, navigate to the *Topology*
+. Click in the middle of the `stateful-front` icon and details will shows on the right.
+. Click `view logs` from the Builds as shown here image:view-logs.png[view build log]
+. Click `Action` --> cancel build
+. In the left panel, navigate to the *Build*
+. Click 3-dot icon on the right and select `Start Build`
+
+=== Test the application
+
+. In the left panel, navigate to the *Topology*
+. Click in the middle of the `stateful-front` icon and details will shows on the right.
+. You can see both pods are in `Running` state since they show as a solid blue circle around the pods.
+. Click onto the link under Route section in the right panel image:statefullapp.png[running]
+. Add `/init` to the url from the browser to initialize the database table.
+. Change the URL to `/customer` to view the data from the database table.
+
+
+=== Import Source code to CodeReady Workspace
+If you like to import the code into code ready, here are the steps.
+
+
+. Fork the example Spring Boot Github repo from https://github.com/piggyvenus/springboot-cockroach
+. Click the ApplicationMenu on the top right corner image:application-menu.png[Application Menu]
+. Click `CodeReady workspaces`
+. In the left panel, navigate to the *Workspaces* image:workspaces.png[workspaces]
+. Click `Add Workspace`
+. Update the name as `statefulapp`
+. Select `Java Spring Boot` from `Select Stack`
+. Click `Remove` from the `Projects` section image:workspace-proj.png[Remove sample project]
+. Click `Git`
+. Enter the Git URL from your forked repo
+. Click `Add`
+. Click `Create and Open`

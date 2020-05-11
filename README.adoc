@@ -1,6 +1,9 @@
 = CodeReady Workspaces Workshop
 This repository contains a guide for the CodeReady Workspaces workshop and other related resources.
 
+=== Instructor Guid
+If you are setting the workshop, here is where you start instructor link:instructor-guide.adoc[guide]
+
 === Installing on OpenShift
 Connect to openshift using the command line tools and then run the `update` script
 [source,shell]

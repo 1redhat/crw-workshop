@@ -42,13 +42,13 @@ components:
 commands:
   - name: Package the application
     actions:
-      - workdir: '${CHE_PROJECTS_ROOT}/crw-fruit-service'
+      - workdir: '${CHE_PROJECTS_ROOT}/fruit-service'
         type: exec
         command: mvn package
         component: maven
   - name: Start Quarkus in devmode (hot deploy + debug)
     actions:
-      - workdir: '${CHE_PROJECTS_ROOT}/crw-fruit-service'
+      - workdir: '${CHE_PROJECTS_ROOT}/fruit-service'
         type: exec
         command: 'mvn compile quarkus:dev'
         component: maven

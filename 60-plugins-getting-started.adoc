@@ -1,112 +1,18 @@
 [[plugins]]
 = Working with Plugins
-In this lab you will learn how to work with the plugins that ship with CodeReady Workspaces, how to add plugins to the CodeReady Workspaces plugin registry, how to add external plugin registires, and how to port a VS Code plugin.
+In this lab you will learn how to work with plugins which are used to extend the native functionality of {{ PRODUCT }}.
 
-== Plugin Registry
-CodeReady Workspaces is deployed with a plugin registry of all the plugins that have already been ported to CodeReady Workspaces.
+There are are three ways to work with {{ PRODUCT }} plugins:
+. *{{ PRODUCT }}* includes a plugin registry with a number of compatible plugins supported by Redhat.
+. *Visual Studio Code Extensions* can be ported or "wrapped" and included in a workspace or added to an external registry.
+. *External Registries* can augment the plugin library by centralizing a group of widely used business plugins.
 
-To browse the catalog of available plugins select *View → Plugins* from the main menu.
+== Installing Plugins
+Let's first explore how to install plugins from the {{ PRODUCT }} registry.
 
-To view the raw plugin registry visit `/v3/plugins/index.json`.
-
-3 ways 1) add plugin to registry 2) add external registry 3) add plugin repository
-
-=== Local Plugin Registry
-
-TODO: continue here
-
-=== Remote Plugin Registry
-
-== Porting a plugin
-Porting Visual Studio Code extensions to Eclipse Che plugins is a simple
-TODO: continue here
-
-In today's workshop we will port the https://marketplace.visualstudio.com/items?itemName=vscodevim.vim[Visual Studio Code Vim] emulator extension.
-
-*Prerequisites*:
-
-* Read/write access to a GitHub repository for the this project
-* Read/write access to a CRW Workspace
-
-NOTE: There are some nuances to consider when porting more complex extensions.
-
-=== Let's get started...
-==== Schema Definition
-. Let's start by creating a new Git respository based off the templated provided for you in the `https://github.com/readyhat/che-plugin-blueprint[readyhat/che-plugin-blueprint]` repository. 
+. From within a workspace click *View → Plugins* to find a complete index of the plugins that ship with {{ PRODUCT }}.
 +
-image:;70-plugin-template-start.png[image]
+image::60-view-plugins.png[image]
 +
-. Name your repository *che-plugin-vim* and make sure the respository is public.
-+
-image::70-create-repository.png[image]
-+
-. We will use the GitHub editor to modify our schema file. With the `mater` branch selected click to open the `meta.yaml` and then click the `edit` icon.
-+
-image::70-edit-schema-definition.png[image]
-+
-. Edit the `meta.yaml` schema definition with the values below and commit to your `master` branch: (please take note of the values wrapped in curly braces. For instance, `{plugin_version}`` _should_ coincide with the VS Code extension you're porting. This will be important later.)
-[source,yaml]
-----
-apiVersion: v2
-publisher: {publisher_here} (e.g.: readyhat)
-name: {plugin-name} (e.g.: vscode-vim)
-version: {plugin_version} (e.g.: 1.14.1)
-type: VS Code Extension
-displayName: Vim
-title: Visual Studio Code Vim
-description: VS Code Vim extension ported for Eclipse Che!
-icon: https://www.eclipse.org/che/images/logo-eclipseche.svg
-repository: https://github.com/VSCodeVim/Vim.git
-spec:
-  containers:
-    - image: "registry.redhat.io/codeready-workspaces/plugin-openshift-rhel8"
-      name: crw-ocp-rel8
-  extensions:
-    - https://github.com/{your_repo}/che-plugin-vim/raw/{plugin_version}/vscode-vim.vsix
-----
-+
-image::70-schema-definition-commit.png[image]
-
-==== Visual Studio Code Extension
-. Now we will download the `.vsix` Visual Studio Extension to your local filesystem. Navigate to the https://marketplace.visualstudio.com/items?itemName=vscodevim.vim[Microsoft Visual Studio Code Marketplace] to find the Vim extension and download it. *IMPORTANT: When downloading the extension be sure to rename it `vscode-vim.vsix`!*
-+
-image::70-vscode-marketplace-vim.png[image]
-+
-. Once downloaded return to the root directory of your GitHub repository and click *Upload files*
-+
-image::70-repository-upload-file.png[image]
-+
-. Now upload the `vscode-vim.vsix` plugin to the `mater` branch with a commit message.
-+
-image::70-upload-vscode-vim-extension.png[image]
-+
-. Now we will tag a release by clicking *releases* on our repository dashboard.
-+
-image::70-repository-releases.png[image]
-+
-. Provide the appropriate version and release information on the *Release* page and click *Publish release*
-+
-image::70-repository-publish-release.png[image]
-+
-. Lastly, copy the link to your tagged release of the `meta.yaml` file by clicking the *Version tag → meta.yaml → Raw* and copying the URL from the address bar.
-+
-image::70-repository-release-selector.png[image]
-+
-image::70-repository-release-raw.png[image]
-+
-==== CodeReady Workspaces Plugin
-Now we'll install the ported plugin to your workspace.
-
-. Return to your isntance of CodeReady Workspaces Dashboard and select a workspaces.
-+
-image::70-crc-select-workspace.png[image]
-+
-. Navigate to the *Devfile* tab, locate the section labaled `components:` and add a new component (NOTE: be sure to replace `{plugin-repository}` with your tagged release path to the `meta.yaml` file you just coppied.):
-[source,yaml]
-----
-components:
-  ...
-  - type: chePlugin
-    reference: {plugin-repository} (ex: https://raw.githubusercontent.com/readyhat/che-plugin-vim/v1.14.1/meta.yaml)
-----
-. Click *Save* and then click *Run*
+. Click the extension that matches your requiements.
+. Click *Install* to install the desired plugin.

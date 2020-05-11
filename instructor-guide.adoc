@@ -3,6 +3,7 @@
 == Instructor Guide
 
 This is the guide to hep you to setup a workshop.
+
 === Prerequisite
 
 1. To get an AWS account if you don't have one. Please check with your manager to get the contact info.

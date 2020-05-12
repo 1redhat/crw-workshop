@@ -11,7 +11,7 @@ mkdir workshop
 ----
 ./openshift-install create install-config --dir=./workshop
 ----
-3) update install-config.yaml with the following for the `compute` component and update the zones per your region.
+3) update install-config.yaml with the following for the `compute` component and update the zones per your region and the number of workers per size of your workshop. 4 workers is minimum.
 [source,yaml]
 ----
 compute:

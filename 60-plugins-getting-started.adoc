@@ -3,6 +3,7 @@
 In this lab you will learn how to work with plugins which are used to extend the native functionality of {{ PRODUCT }}.
 
 There are are three ways to work with {{ PRODUCT }} plugins:
+
 . *{{ PRODUCT }}* includes a plugin registry with a number of compatible plugins supported by Redhat.
 . *Visual Studio Code Extensions* can be ported or "wrapped" and included in a workspace or added to an external registry.
 . *External Registries* can augment the plugin library by centralizing a group of widely used business plugins.

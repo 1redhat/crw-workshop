@@ -4,7 +4,7 @@ In this workshop we will port an existing https://marketplace.visualstudio.com/i
 
 The following three secions will describe how to write the *schema meta* file wrapper for the plugin, how to incorporate teh Visual Studio Code extension, and how to add it to a workspace.
 
-=== Schema Meta File
+=== Creating the Plugin-in Wrapper
 The CodeReady Workspaces API is compatible with Visual Studio Code. Plug-ins are isolated and provide their own dependencies packaged in containers and run as sidecars to the pod.
 
 We'll start by creating a new public repository to store our plug-in source code and then define our plug-in meta data.
@@ -17,21 +17,21 @@ We'll start by creating a new public repository to store our plug-in source code
 +
 image::70-git-edit.png[image]
 +
-. Provide values to the schema per the following guidance:
+. There are two instances of each the following values that you will need to replace with your data: `publisherName`, `pluginName`, and `pluginVersion`. Make sure the `extensions` repository maps to the Git repository you're working in. Commit the chagnes to your `master` branch once complete.
 +
 [source, yaml]
 ----
 apiVersion: v2
 ## Name of the publisher.
 ## Example: readyhat
-publisher: {publisher_here}
+publisher: publisherName
 ## Slugified version of the plug-in name.
 ## Example: vscode-vim
-name: {plugin-name}
+name: pluginName
 ## For the sake of organization & simplicity
 ## match this to the version of the VS Code
 ## extension. Example: 1.14.1
-version: {plugin_version}
+version: pluginVersion
 type: VS Code Extension
 displayName: Vim
 title: Visual Studio Code Vim
@@ -44,46 +44,28 @@ spec:
       name: crw-ocp-rel8
   extensions:
     ## Use the information for your repository.
-    ## The {plugin_version} should match the above.
-    ## It will later match a tagged release.
-    - https://github.com/{your_github_user}/{your_github_repo}/raw/{plugin_version}/vscode-vim.vsix
+    ## The pluginVersion will match a tagged release.
+    - https://github.com/publisherName/pluginName/raw/pluginVersion/vscode-vim.vsix
 ----
 
-=== Visual Studio Code Extension
-. Now we will download the `.vsix` Visual Studio Extension to your local filesystem. Navigate to the https://marketplace.visualstudio.com/items?itemName=vscodevim.vim[Microsoft Visual Studio Code Marketplace] to find the Vim extension and download it. *IMPORTANT: When downloading the extension be sure to rename it `vscode-vim.vsix`!*
-+
-image::70-vscode-marketplace-vim.png[image]
-+
-. Once downloaded return to the root directory of your GitHub repository and click *Upload files*
-+
-image::70-repository-upload-file.png[image]
-+
-. Now upload the `vscode-vim.vsix` plugin to the `mater` branch with a commit message.
-+
-image::70-upload-vscode-vim-extension.png[image]
-+
-. Now we will tag a release by clicking *releases* on our repository dashboard.
-+
-image::70-repository-releases.png[image]
-+
-. Provide the appropriate version and release information on the *Release* page and click *Publish release*
-+
-image::70-repository-publish-release.png[image]
-+
-. Lastly, copy the link to your tagged release of the `meta.yaml` file by clicking the *Version tag → meta.yaml → Raw* and copying the URL from the address bar.
-+
-image::70-repository-release-selector.png[image]
-+
-image::70-repository-release-raw.png[image]
-+
-=== CodeReady Workspaces Plugin
+=== The VS Code Extension
+
+The Visual Studio Code Extension is a `.vsix` file that we will download from the Visual Studio marketplace and add to our repository.
+
+. Visit the [Vim extension][5] on the Visual Studio Code marketplace.
+. Click the **"Download Extension"** link located in the right most column and save it to your local hard drive and rename the file to `vscode-vim.vsix`.
+. Return to the root of your Git repository and click the **"Upload files"** button.
+. Upload the `vscode-vim.vsix` file and commit it to your `master` branch.
+. Now we will tag a release by clicking Now we will tag a release by clicking **"0 releases"** on our repository dashboard.
+. Specify the version number that you provided for the `extensions` repository in the `meta.yaml` file (ex. v1.14.1) and click the green **"Publish release"** button.
+. Lastly, copy the link to your tagged release of the `meta.yaml` file by navigating to **Version tag → meta.yaml** and then clicking the **"Raw"** button. Copy the URL from the address bar.
+
+=== Installing the Plug-in
 Now we'll install the ported plugin to your workspace.
 
-. Return to your isntance of CodeReady Workspaces Dashboard and select a workspaces.
+. Select a workspace from your dashboard and navigate to the **"Devfile"** tab.
+. Locate the `components:` and add a new component.
 +
-image::70-crc-select-workspace.png[image]
-+
-. Navigate to the *Devfile* tab, locate the section labaled `components:` and add a new component (NOTE: be sure to replace `{plugin-repository}` with your tagged release path to the `meta.yaml` file you just coppied.):
 [source, yaml]
 ----
 components:
@@ -91,4 +73,7 @@ components:
   - type: chePlugin
     reference: {plugin-repository} (ex: https://raw.githubusercontent.com/readyhat/che-plugin-vim/v1.14.1/meta.yaml)
 ----
-. Click *Save* and then click *Run*
+. Click **"Save"** and then click **"Run"** before opening the workspace.
+. If you're able to use Vim commands then your plugin was successfully ported and installed!
+
+NOTE: You can now find the Vim plug-in in the plug-in panel by navigating to **View → Plugins** and filtering by "Show Installed Plugins".

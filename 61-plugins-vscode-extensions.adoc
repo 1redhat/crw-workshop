@@ -1,9 +1,10 @@
 [[plugins]]
 == Porting a plugin
-In this workshop we will port the https://marketplace.visualstudio.com/items?itemName=vscodevim.vim[Visual Studio Code Vim] emulator extension.
+In this workshop we will port an existing https://marketplace.visualstudio.com/items?itemName=vscodevim.vim[Visual Studio Code Vim] emulator extension to a {{ PRODUCT }} plugin and add it to a workspace via the `Devfile` configuration.
 
-=== Let's get started...
-==== Schema Definition
+The following three secions will describe how to write the *schema meta* file wrapper for the plugin, how to incorporate teh Visual Studio Code extension, and how to add it to a workspace.
+
+=== Schema Meta File
 . Let's start by creating a new Git respository based off the templated provided for you in the `https://github.com/readyhat/che-plugin-blueprint[readyhat/che-plugin-blueprint]` repository. 
 +
 image:;70-plugin-template-start.png[image]
@@ -39,7 +40,7 @@ spec:
 +
 image::70-schema-definition-commit.png[image]
 
-==== Visual Studio Code Extension
+=== Visual Studio Code Extension
 . Now we will download the `.vsix` Visual Studio Extension to your local filesystem. Navigate to the https://marketplace.visualstudio.com/items?itemName=vscodevim.vim[Microsoft Visual Studio Code Marketplace] to find the Vim extension and download it. *IMPORTANT: When downloading the extension be sure to rename it `vscode-vim.vsix`!*
 +
 image::70-vscode-marketplace-vim.png[image]
@@ -66,7 +67,7 @@ image::70-repository-release-selector.png[image]
 +
 image::70-repository-release-raw.png[image]
 +
-==== CodeReady Workspaces Plugin
+=== CodeReady Workspaces Plugin
 Now we'll install the ported plugin to your workspace.
 
 . Return to your isntance of CodeReady Workspaces Dashboard and select a workspaces.

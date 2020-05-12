@@ -11,7 +11,11 @@ We will continue to use the workspace we created in the previous lab to shar it 
 image::share.png[image]
 +
 . Click on the blue *Add Developer* button in the upper left corner.
-. Add a fellow student using their email address.
+. Add a fellow student using their email address and hit *Enter*.
++
+image::add-developer.png[image]
++
+. Added developers should be listed here image:sharing-dev.png[dev list]
 . Click the green *open* button in the upper right corner
 . Have the fellow student refresh thier browser
 . In the *RECENT WORKSPACES* they will have a new workspace with the same name as yours
@@ -20,5 +24,5 @@ image::recent-workspace.png[image]
 +
 . Click on it
 . Now you and the fellow student open the *GreetingsService.java* file in the IDE.
-. One of the students change code in the file. 
+. One of the students change code in the file.
 . Notice the other one can see the changes in thier IDE.

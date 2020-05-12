@@ -1,8 +1,15 @@
 = CodeReady Workspaces Workshop
 This repository contains a guide for the CodeReady Workspaces workshop and other related resources.
 
-=== Instructor Guid
+=== Instructor Guide
 If you are setting the workshop, here is where you start instructor link:instructor-guide.adoc[guide]
+
+=== Configure the Workshop Instructions
+Modify the configuration to meet your needs
+
+. Open the *_crw_workshop.yaml* file
+. Modify the *var* values to meet your needs
+. Modify the *modules* to include the desired sections.
 
 === Installing on OpenShift
 Connect to openshift using the command line tools and then run the `update` script

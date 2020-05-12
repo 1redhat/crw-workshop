@@ -2,58 +2,40 @@
 == Creating a project configuration
 Code Ready Workspaces allows for custom project configuration.  In this lab we will use a custom configuration to create a project with in Codeready Workspaces
 
-
 === Sharing loading a workspace
 . In the CodeReady workspaces menu bar go to *Workspaces*.
 . Stop any running workspace
 . Click the *Add Workspace* button
 . Click on the *IMPORT DEVFILE* tab
 . Click on the grey *URL* button below the tabs.
-. Paste `https://raw.githubusercontent.com/1redhat/crw-workshop/master/devfile.yml` in the *URL* field.
+. Paste `https://raw.githubusercontent.com/1redhat/crw-fruit-service/master/devfile.yml` in the *URL* field.
 . Once completed your enviromnent should look like
 +
 image::devfile-ide.png[image]
 
-
 === Exploring the IDE 
-. Notice in the file exployer you now have two projects.
-. Expand the projects and notice they are both typical maven projects.
-. Add a new file to the *fruit-service*.
-.. Right click on *fruit-service*.
-.. Click *New File*.
-.. Leave the default name and click *OK*.
-. Go to the git icon.
-. Notice the ide noticed the file changed.  This because the project is linked to git.
+. In the file exployer right click on the *fruit-service* 
+. Click *New File*.
+. Leave the default name and click *OK*.
+. Go to the git icon and notice the new file is displayed.
+. In this case the configuration (devfile) is configured to use git/.
 +
 image::devfile-git.png[image]
 
+=== Run the task
+. Open the task manager (cube icon) on the right.
+. Single click *Start in devmode*.
+. After the application starts, go to the taskmanager.
+. Single click *fruits-ui*
 
+=== Understanding the devfile
+. Open https://raw.githubusercontent.com/1redhat/crw-fruit-service/master/devfile.yml in a browser.
+. Notice the *location* and *type* in the projects section.
+. The *endpoints* within the components section creates the links display in the taskmanager.
+. In the *commands* section you will see the commands to package, start in dev mode, and debug.
+. Stop and delete the *fruit-service* workspace
 
+=== Creating a project using a single URL
+The fastest and simplest way to create a project is to append the CodeReady Host with the devfile.
 
-
-
-
-
-
-
-. This brings you to settings page.  click on the *Share* tab like below
-+
-image::share.png[image]
-+
-. Click on the blue *Add Developer* button in the upper left corner.
-. Add a fellow student using their email address.
-. Click the green *open* button in the upper right corner
-. Have the fellow student refresh thier browser
-. In the *RECENT WORKSPACES* they will have a new workspace with the same name as yours
-+
-image::recent-workspace.png[image]
-+
-. Click on it
-. Now you and the fellow student open the *GreetingsService.java* file in the IDE.
-. One of the students change code in the file. 
-. Notice the other one can see the changes in thier IDE.
-
-
-https://$CODE_READY_HOST/f?url=https://github.com/aerogear/ionic-showcase/f?url=https://raw.githubusercontent.com/1redhat/crw-workshop/master/devfile.yml
-
-http://codeready-codeready.apps.clustere4f9.sandbox596.opentlc.com/f?url=https://raw.githubusercontent.com/1redhat/crw-workshop/master/devfile.yml
+{{CODE_READY_HOST}}/f?url=https://raw.githubusercontent.com/1redhat/crw-fruit-service/master/devfile.yml

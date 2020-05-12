@@ -52,7 +52,7 @@ spec:
 
 The Visual Studio Code Extension is a `.vsix` file that we will download from the Visual Studio marketplace and add to our repository.
 
-. Visit the [Vim extension][5] on the Visual Studio Code marketplace.
+. Visit the https://marketplace.visualstudio.com/items?itemName=vscodevim.vim[Vim extension] on the Visual Studio Code marketplace.
 . Click the **"Download Extension"** link located in the right most column and save it to your local hard drive and rename the file to `vscode-vim.vsix`.
 . Return to the root of your Git repository and click the **"Upload files"** button.
 . Upload the `vscode-vim.vsix` file and commit it to your `master` branch.

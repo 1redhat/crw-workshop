@@ -2,15 +2,18 @@
 == Installing OCP using larger machine type
 
 1) Create directory (any name you like)
-....
-mkdir poc
-....
+[source,shell]
+----
+mkdir workshop
+----
 2) create install-config.yaml
-....
-./openshift-install create install-config --dir=./poc
-....
+[source,shell]
+----
+./openshift-install create install-config --dir=./workshop
+----
 3) update install-config.yaml with the following for the `compute` component and update the zones per your region.
-....
+[source,yaml]
+----
 compute:
 - architecture: amd64
   hyperthreading: Enabled
@@ -23,8 +26,9 @@ compute:
       - us-west-2c
       type: m5.2xlarge
   replicas: 4
-....
+----
 4) Create Cluster
-....
-./openshift-install create cluster --dir=./poc --log-level=info
-....
+[source,shell]
+----
+./openshift-install create cluster --dir=./workshop --log-level=info
+----

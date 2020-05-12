@@ -7,7 +7,7 @@ This is the guide to hep you to setup a workshop.
 === Prerequisite
 
 1. To get an AWS account if you don't have one. Please check with your manager to get the contact info.
-2. If you don't have a login to cloud.redhat.com, please get register. 
+2. If you don't have a login to cloud.redhat.com, please get register.
 
 === Setting up the guide
 
@@ -15,10 +15,12 @@ This is the guide to hep you to setup a workshop.
 2. Setup the AWS credential.
 3. Download the OpenShift installer and OpenShift CLI.
 4. Estimate the number of attendees.
-5. Use install custom config link:#install-ocp-custom-config.adoc[doc] to customize cluster size and create cluster.
+5. Use install custom config link:https://github.com/1redhat/crw-workshop/blob/master/customSizeCluster.adoc[doc] to customize cluster size and create cluster.
+
 
 === Setting up the workshop
 
 1. Create user and setup identity provider. You will need 2 sets of users (admin and user).
 2. If you need to modify the workshop, you can fork the repo and update the order of labs in _modules.yml
 3. Deploy the workshop via update.sh in the repo.
+4. Setup Let's encrypt and install certs for router via instruction from this link https://www.openshift.com/blog/requesting-and-installing-lets-encrypt-certificates-for-openshift-4)

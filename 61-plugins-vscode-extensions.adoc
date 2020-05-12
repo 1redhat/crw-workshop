@@ -23,7 +23,7 @@ image::70-git-edit.png[image]
 ----
 apiVersion: v2
 ## Name of the publisher.
-## Example: readyhat.
+## Example: readyhat
 publisher: {publisher_here}
 ## Slugified version of the plug-in name.
 ## Example: vscode-vim

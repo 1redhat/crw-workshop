@@ -18,7 +18,8 @@ image::70-create-repository.png[image]
 image::70-edit-plugin-schema-definition.png[image]
 +
 . Edit the `meta.yaml` schema definition with the values below and commit to your `master` branch: (please take note of the values wrapped in curly braces. For instance, `{plugin_version}`` _should_ coincide with the VS Code extension you're porting. This will be important later.)
-[source,yaml]
++
+[source, yaml]
 ----
 apiVersion: v2
 publisher: {publisher_here} (e.g.: readyhat)
@@ -75,7 +76,7 @@ Now we'll install the ported plugin to your workspace.
 image::70-crc-select-workspace.png[image]
 +
 . Navigate to the *Devfile* tab, locate the section labaled `components:` and add a new component (NOTE: be sure to replace `{plugin-repository}` with your tagged release path to the `meta.yaml` file you just coppied.):
-[source,yaml]
+[source, yaml]
 ----
 components:
   ...

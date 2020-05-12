@@ -32,5 +32,3 @@ modules:
     name: Introduction to Plugins
   61-plugins-vscode-extensions:
     name: Porting Visual Studio Extensions
-  62-plugins-plugin-registry:
-    name: External Plugin Registry

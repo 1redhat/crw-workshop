@@ -28,4 +28,3 @@ modules:
   - 53-devfile
   - 60-plugins-getting-started
   - 61-plugins-vscode-extensions
-  - 62-plugins-plugin-registry

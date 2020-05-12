@@ -9,12 +9,13 @@ Code Ready Workspaces allows for custom project configuration.  In this lab we w
 . Click on the *IMPORT DEVFILE* tab
 . Click on the grey *URL* button below the tabs.
 . Paste `https://raw.githubusercontent.com/1redhat/crw-fruit-service/master/devfile.yml` in the *URL* field.
+. Click `Create and Open`
 . Once completed your enviromnent should look like
 +
 image::devfile-ide.png[image]
 
-=== Exploring the IDE 
-. In the file exployer right click on the *fruit-service* 
+=== Exploring the IDE
+. In the file exployer right click on the *fruit-service*
 . Click *New File*.
 . Leave the default name and click *OK*.
 . Go to the git icon and notice the new file is displayed.
@@ -25,7 +26,8 @@ image::devfile-git.png[image]
 === Run the task
 . Open the task manager (cube icon) on the right.
 . Single click *Start in devmode*.
-. After the application starts, go to the taskmanager.
+. Wait until you see this image:dev-mode.png[dev mode]
+. Go to the taskmanager.
 . Single click *fruits-ui*
 
 === Understanding the devfile

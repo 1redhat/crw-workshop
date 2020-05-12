@@ -140,3 +140,16 @@ If you like to import the code into code ready, here are the steps.
 . Enter the Git URL from your forked repo
 . Click `Add`
 . Click `Create and Open`
+
+[hide]
+========
+=== Build the Stateful Application
+
+. Click `Terminal` from the menu bar
+. Select `Open Terminal from specific container`
+. Select `maven`
+. Run `cd springboot-cockroach` in the terminal
+. Click `Files` icon to explore the project as shown here image:explore-proj.png[explore project]
+. Click to the cube icon as shown here image:deploy-app.png[deploy menu]
+
+========

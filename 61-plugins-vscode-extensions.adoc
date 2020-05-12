@@ -17,14 +17,21 @@ We'll start by creating a new public repository to store our plug-in source code
 +
 image::70-git-edit.png[image]
 +
-. Edit the `meta.yaml` schema definition with the values below and commit to your `master` branch: (please take note of the values wrapped in curly braces. For instance, `{plugin_version}`` _should_ coincide with the VS Code extension you're porting. This will be important later.)
+. Provide values to the schema per the following guidance:
 +
 [source, yaml]
 ----
 apiVersion: v2
-publisher: {publisher_here} (e.g.: readyhat)
-name: {plugin-name} (e.g.: vscode-vim)
-version: {plugin_version} (e.g.: 1.14.1)
+## Name of the publisher.
+## Example: readyhat.
+publisher: {publisher_here}
+## Slugified version of the plug-in name.
+## Example: vscode-vim
+name: {plugin-name}
+## For the sake of organization & simplicity
+## match this to the version of the VS Code
+## extension. Example: 1.14.1
+version: {plugin_version}
 type: VS Code Extension
 displayName: Vim
 title: Visual Studio Code Vim
@@ -36,10 +43,11 @@ spec:
     - image: "registry.redhat.io/codeready-workspaces/plugin-openshift-rhel8"
       name: crw-ocp-rel8
   extensions:
-    - https://github.com/{your_repo}/che-plugin-vim/raw/{plugin_version}/vscode-vim.vsix
+    ## Use the information for your repository.
+    ## The {plugin_version} should match the above.
+    ## It will later match a tagged release.
+    - https://github.com/{your_github_user}/{your_github_repo}/raw/{plugin_version}/vscode-vim.vsix
 ----
-+
-image::70-schema-definition-commit.png[image]
 
 === Visual Studio Code Extension
 . Now we will download the `.vsix` Visual Studio Extension to your local filesystem. Navigate to the https://marketplace.visualstudio.com/items?itemName=vscodevim.vim[Microsoft Visual Studio Code Marketplace] to find the Vim extension and download it. *IMPORTANT: When downloading the extension be sure to rename it `vscode-vim.vsix`!*

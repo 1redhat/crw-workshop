@@ -5,17 +5,17 @@ In this workshop we will port an existing https://marketplace.visualstudio.com/i
 The following three secions will describe how to write the *schema meta* file wrapper for the plugin, how to incorporate teh Visual Studio Code extension, and how to add it to a workspace.
 
 === Schema Meta File
-. Let's start by creating a new Git respository based off the templated provided for you in the `https://github.com/readyhat/che-plugin-blueprint[readyhat/che-plugin-blueprint]` repository. 
+The CodeReady Workspaces API is compatible with Visual Studio Code. Plug-ins are isolated and provide their own dependencies packaged in containers and run as sidecars to the pod.
+
+We'll start by creating a new public repository to store our plug-in source code and then define our plug-in meta data.
+
+. Let's start by visiting the template repository on GitHub: `https://github.com/readyhat/che-plugin-blueprint[readyhat/che-plugin-blueprint]`. 
+. Click the green button labeled **"Use this template"** near the **"Clone or Download"** button.
+. Specify a **Repository name** and be sure the repository is set to **public**.
+. Click to view the `meta.yaml` file source.
+. Edit the `meta.yaml` file in GitHub by clicking the **pencil** button.
 +
-image::70-plugin-template-start.png[image]
-+
-. Name your repository *che-plugin-vim* and make sure the respository is public.
-+
-image::70-create-repository.png[image]
-+
-. We will use the GitHub editor to modify our schema file. With the `mater` branch selected click to open the `meta.yaml` and then click the `edit` icon.
-+
-image::70-edit-plugin-schema-definition.png[image]
+image::70-git-edit.png[image]
 +
 . Edit the `meta.yaml` schema definition with the values below and commit to your `master` branch: (please take note of the values wrapped in curly braces. For instance, `{plugin_version}`` _should_ coincide with the VS Code extension you're porting. This will be important later.)
 +

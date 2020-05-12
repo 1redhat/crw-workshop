@@ -26,3 +26,11 @@ modules:
     name: Getting Started in the IDE
   52-sharing:
     name: Workspace Sharing
+  53-devfile:
+    name: Project Configuration
+  60-plugins-getting-started:
+    name: Introduction to Plugins
+  61-plugins-vscode-extensions:
+    name: Porting Visual Studio Extensions
+  62-plugins-plugin-registry:
+    name: External Plugin Registry

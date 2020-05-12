@@ -3,6 +3,7 @@
 == Instructor Guide
 
 This is the guide to hep you to setup a workshop.
+
 === Prerequisite
 
 1. To get an AWS account if you don't have one. Please check with your manager to get the contact info.
@@ -14,7 +15,11 @@ This is the guide to hep you to setup a workshop.
 2. Setup the AWS credential.
 3. Download the OpenShift installer and OpenShift CLI.
 4. Estimate the number of attendees.
+<<<<<<< HEAD
 5. Use [#https://github.com/1redhat/crw-workshop/blob/master/customSizeCluster.adoc] to customize cluster size and create cluster.
+=======
+5. Use install custom config link:#install-ocp-custom-config.adoc[doc] to customize cluster size and create cluster.
+>>>>>>> b05822f898f88f98a1f89798d71d84ea216f3851
 
 === Setting up the workshop
 

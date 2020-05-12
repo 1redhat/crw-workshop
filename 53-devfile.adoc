@@ -1,0 +1,59 @@
+[[devfile]]
+== Creating a project configuration
+Code Ready Workspaces allows for custom project configuration.  In this lab we will use a custom configuration to create a project with in Codeready Workspaces
+
+
+=== Sharing loading a workspace
+. In the CodeReady workspaces menu bar go to *Workspaces*.
+. Stop any running workspace
+. Click the *Add Workspace* button
+. Click on the *IMPORT DEVFILE* tab
+. Click on the grey *URL* button below the tabs.
+. Paste `https://raw.githubusercontent.com/1redhat/crw-workshop/master/devfile.yml` in the *URL* field.
+. Once completed your enviromnent should look like
++
+image::devfile-ide.png[image]
+
+
+=== Exploring the IDE 
+. Notice in the file exployer you now have two projects.
+. Expand the projects and notice they are both typical maven projects.
+. Add a new file to the *fruit-service*.
+.. Right click on *fruit-service*.
+.. Click *New File*.
+.. Leave the default name and click *OK*.
+. Go to the git icon.
+. Notice the ide noticed the file changed.  This because the project is linked to git.
++
+image::devfile-git.png[image]
+
+
+
+
+
+
+
+
+
+
+. This brings you to settings page.  click on the *Share* tab like below
++
+image::share.png[image]
++
+. Click on the blue *Add Developer* button in the upper left corner.
+. Add a fellow student using their email address.
+. Click the green *open* button in the upper right corner
+. Have the fellow student refresh thier browser
+. In the *RECENT WORKSPACES* they will have a new workspace with the same name as yours
++
+image::recent-workspace.png[image]
++
+. Click on it
+. Now you and the fellow student open the *GreetingsService.java* file in the IDE.
+. One of the students change code in the file. 
+. Notice the other one can see the changes in thier IDE.
+
+
+https://$CODE_READY_HOST/f?url=https://github.com/aerogear/ionic-showcase/f?url=https://raw.githubusercontent.com/1redhat/crw-workshop/master/devfile.yml
+
+http://codeready-codeready.apps.clustere4f9.sandbox596.opentlc.com/f?url=https://raw.githubusercontent.com/1redhat/crw-workshop/master/devfile.yml

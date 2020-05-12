@@ -10,6 +10,7 @@ vars:
   REDHAT_DOWNLOAD_OC_PORTAL_URL: "https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/"
   API_URL: "https://api.cluster-8f8a.sandbox1118.opentlc.com:6443"
   CONSOLE_ADDRESS: "https://console-openshift-console.apps.cluster-8f8a.sandbox1118.opentlc.com"
+  PRODUCT_NAME  : "CodeReady Workspaces"
 
 modules:
   activate:
@@ -24,3 +25,7 @@ modules:
   - 50-dev-access
   - 51-getting-started
   - 52-sharing
+  - 53-devfile
+  - 60-plugins-getting-started
+  - 61-plugins-vscode-extensions
+  - 62-plugins-plugin-registry

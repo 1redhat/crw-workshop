@@ -5,12 +5,12 @@ content:
   url: https://raw.githubusercontent.com/1redhat/crw-workshop/master
 
 vars:
+  API_URL: "https://api.clustere4f9.sandbox596.opentlc.com:6443"
+  CONSOLE_ADDRESS: "https://console-openshift-console.apps.clustere4f9.sandbox596.opentlc.com"
+  CODE_READY_HOST: "http://codeready-codeready.apps.clustere4f9.sandbox596.opentlc.com"
   JAVA_APP: false
   VERSION: "4.3.17"
   REDHAT_DOWNLOAD_OC_PORTAL_URL: "https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/"
-  API_URL: "https://api.cluster-8f8a.sandbox1118.opentlc.com:6443"
-  CONSOLE_ADDRESS: "https://console-openshift-console.apps.cluster-8f8a.sandbox1118.opentlc.com"
-  CODE_READY_HOST: "http://codeready-codeready.apps.cluster-8f8a.sandbox1118.opentlc.com"
   PRODUCT_NAME  : "CodeReady Workspaces"
 
 modules:

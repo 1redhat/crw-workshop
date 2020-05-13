@@ -20,7 +20,6 @@ modules:
   - 12-assign-limit-ranges-and-quotas
   - 15-configurate-project-creation
   - 10-install
-  - 11-install-db
   - 13-monitoring-usage
   - 50-dev-access
   - 51-getting-started

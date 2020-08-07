@@ -8,6 +8,7 @@ NOTE: These steps require an account on a running instance of OpenShift with Cod
 === Log into Openshift and access CodeReady Workspaces
 . Open a Chrome browser
 . Open the CodeReady console URL: {{CODE_READY_HOST}}
+. If using self-signed certificates add root cerficate to your browser using these https://access.redhat.com/documentation/en-us/red_hat_codeready_workspaces/2.1/html/installation_guide/installing-codeready-workspaces-in-tls-mode-with-self-signed-certificates_crw[instructions]
 . Click `Advance` and Click `proceed...` link on the browser, you should be
 presented with the page to select the authentication providers.
 . Authorize user access to the CodeReady by clicking `Allow select permissions`
